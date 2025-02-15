@@ -1,0 +1,319 @@
+<div class="resume-container">
+  <h1 class="title" @fadeIn>Resume</h1>
+  
+  <div class="resume-header" @fadeIn>
+    <p class="intro">
+      Software Engineer with over 4 years of experience in designing and developing Windows and Web applications 
+      from initial to final deliverable. Passionate about learning new technologies and happy to make things happen 
+      for users with strong ability to analyze complex projects and make clean requirements for other team members.
+    </p>
+    <a class="download-btn" href="/assets/resume.pdf" target="_blank">
+      <span class="btn-content">
+        <mat-icon>download</mat-icon>
+        <span>Download PDF</span>
+      </span>
+    </a>
+  </div>
+
+  <div class="resume-content">
+    <section class="resume-section" @listAnimation>
+      <h2>Professional Experience</h2>
+      <div class="experience-item">
+        <div class="experience-header">
+          <div class="title-wrapper">
+            <h3 class="job-title">Senior Software Engineer</h3>
+          </div>
+          <div class="date-info">
+            <span class="date">{{ formatDateRange(experienceDates.senior_software_engineer.start, experienceDates.senior_software_engineer.end) }}</span>
+            <span class="duration">{{ calculateDuration(experienceDates.senior_software_engineer.start, experienceDates.senior_software_engineer.end) }}</span>
+          </div>
+        </div>
+        <div class="company-brief">
+          <div class="company-row">
+            <mat-icon class="brief-icon">business</mat-icon>
+            <span>DIR-ACE Technology</span>
+          </div>
+          <div class="company-row">
+            <mat-icon class="brief-icon">location_on</mat-icon>
+            <span>Yangon, Myanmar</span>
+          </div>
+        </div>
+        <ul>
+          <li>Collaborated with clients on design outlines, creating detailed documentation after incorporating their feedback.</li>
+          <li>Developed and maintained secure, scalable web applications (Java, Spring Boot), desktop applications (Java Swing), automation tools (shell scripts), and stored procedures.</li>
+          <li>Implemented advanced security measures and reduce vulnerabilities by 65%.</li>
+          <li>Conducted unit testing, integration testing, and performance testing.</li>
+          <li>Created comprehensive technical documentation for clear understanding and easy maintenance.</li>
+          <li>Created detailed RD explanation sections for clear project understanding by team members.</li>
+          <li>Monitored project progress and resource utilization, maximizing efficiency.</li>
+          <li>Improved code quality through code reviews and mentored junior developers, ensuring their continuous professional growth.</li>
+        </ul>
+
+        <h3 class="mt-4">Developed and implemented software solutions:</h3>
+        <ul>
+          <li>Web App Development with JAVA and Spring boot</li>
+          <li>Desktop App Development with Java Swing</li>
+          <li>API Developments</li>
+          <li>Web App Developments with Angular</li>
+          <li>Stored Procedure developments</li>
+          <li>Shell Script Developments</li>
+          <li>Automation Tools development with Excel micro-VBA</li>
+        </ul>
+
+        <div class="tools-section">
+          <strong class="section-title">Tools:</strong>
+          <div class="tools-container">
+            <span class="tool-chip">Java</span>
+            <span class="tool-chip">Java Swing</span>
+            <span class="tool-chip">Spring Boot</span>
+            <span class="tool-chip">SQL</span>
+            <span class="tool-chip">PostgreSQL</span>
+            <span class="tool-chip">Stored Procedure</span>
+            <span class="tool-chip">Angular</span>
+            <span class="tool-chip">JavaScript</span>
+            <span class="tool-chip">Linux</span>
+            <span class="tool-chip">Jira</span>
+            <span class="tool-chip">Git</span>
+            <span class="tool-chip">CI/CD Shell Script</span>
+            <span class="tool-chip">Excel VBA</span>
+          </div>
+        </div>
+
+        <div class="achievements-section">
+          <div class="achievement-header">
+            <mat-icon>emoji_events</mat-icon>
+            <strong>Achievements</strong>
+          </div>
+          <div class="achievement-content">
+            <div class="achievement-item">
+              <mat-icon>stars</mat-icon>
+              <span>Awarded the President's Award for Good Progress in Productivity and Quality Assurance (Quality Assurance Award)</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="experience-item">
+        <div class="experience-header">
+          <div class="title-wrapper">
+            <h3 class="job-title">Software Engineer</h3>
+          </div>
+          <div class="date-info">
+            <span class="date">{{ formatDateRange(experienceDates.software_engineer.start, experienceDates.software_engineer.end) }}</span>
+
+            <span class="duration">{{ calculateDuration(experienceDates.software_engineer.start, experienceDates.software_engineer.end) }}</span>
+          </div>
+        </div>
+        <div class="company-brief">
+          <div class="company-row">
+            <mat-icon class="brief-icon">business</mat-icon>
+            <span>DIR-ACE Technology</span>
+          </div>
+          <div class="company-row">
+            <mat-icon class="brief-icon">location_on</mat-icon>
+            <span>Yangon, Myanmar</span>
+          </div>
+        </div>
+        <ul>
+          <li>Contributed to REST API development using Java for improved system capabilities.</li>
+          <li>Refactored complex stored procedures for SIMM calculations, enhancing code readability and optimizing performance for faster initial margin (IM) calculations.</li>
+          <li>Troubleshooted and resolved JBoss server configuration issues for optimal performance.</li>
+          <li>Built a reporting system for KPIs, cost & schedule management for all offshore projects, and interactive dashboards using Angular.</li>
+          <li>Adapted PostgreSQL Stored Procedures for use with SQL Server, ensuring database compatibility across platforms.</li>
+        </ul>
+        <div class="tools-section">
+          <strong class="section-title">Tools:</strong>
+          <div class="tools-container">
+            <span class="tool-chip">Java</span>
+            <span class="tool-chip">Spring Boot</span>
+            <span class="tool-chip">Angular</span>
+            <span class="tool-chip">PostgreSQL</span>
+            <span class="tool-chip">Stored Procedure</span>
+            <span class="tool-chip">JBoss</span>
+            <span class="tool-chip">Jira</span>
+            <span class="tool-chip">Git</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="experience-item">
+        <div class="experience-header">
+          <div class="title-wrapper">
+            <h3 class="job-title">Full Stack Developer</h3>
+          </div>
+          <div class="date-info">
+            <span class="date">{{ formatDateRange(experienceDates.full_stack_developer.start, experienceDates.full_stack_developer.end) }}</span>
+
+            <span class="duration">{{ calculateDuration(experienceDates.full_stack_developer.start, experienceDates.full_stack_developer.end) }}</span>
+          </div>
+        </div>
+        <div class="company-brief">
+          <div class="company-row">
+            <mat-icon class="brief-icon">business</mat-icon>
+            <span>DIR-ACE Technology, </span><span>Myanmar Association of Japan Alumni (MAJA)</span>
+          </div>
+          <div class="company-row">
+            <mat-icon class="brief-icon">location_on</mat-icon>
+
+            <span>Yangon, Myanmar</span>
+          </div>
+        </div>
+
+        <h4 class="project-title">JLPT Registration System Project</h4>
+        
+        <ul>
+          <li>Developed a multi-tiered web application for online submission of Japanese Language Proficiency Test (JLPT) forms.</li>
+          <li>Implemented user interfaces and backend services for applicants, operators, and administrators.</li>
+          <li>Integrated payment gateway (2C2P) for handling online transactions.</li>
+          <li>Managed form applies, test site setup, test term management, and reporting functionalities.</li>
+          <li>Ensured the application's performance, security, and reliability by conducting endto-end testing, unit testing, integration testing, performance testing, and load testing.</li>
+          <li>Designed the system to handle high concurrency, supporting thousands of simultaneous user transactions and ensuring smooth performance during peak usage times.</li>
+          <li>Created comprehensive technical documentations, Software Requirements Specification (SRS) and deployment guides.</li>
+        </ul>
+
+        <div class="tools-section">
+          <strong class="section-title">Tools:</strong>
+          <div class="tools-container">
+            <span class="tool-chip">Rocky Linux</span>
+            <span class="tool-chip">Java 11</span>
+            <span class="tool-chip">Spring Boot</span>
+            <span class="tool-chip">Spring Security</span>
+            <span class="tool-chip">PostgreSQL</span>
+            <span class="tool-chip">JavaScript</span>
+            <span class="tool-chip">jQuery</span>
+            <span class="tool-chip">HTML/CSS</span>
+            <span class="tool-chip">Cypress</span>
+            <span class="tool-chip">Git</span>
+            <span class="tool-chip">CI/CD</span>
+            <span class="tool-chip">2C2P</span>
+          </div>
+        </div>
+
+        <div class="achievements-section">
+          <div class="achievement-header">
+            <mat-icon>emoji_events</mat-icon>
+            <strong>Achievements</strong>
+          </div>
+          <div class="achievement-content">
+            <div class="achievement-item">
+              <mat-icon>stars</mat-icon>
+              <span>Successfully launched the application, facilitating thousands of applicants to register and manage their JLPT exams online.</span>
+            </div>
+            <div class="achievement-item">
+              <mat-icon>stars</mat-icon>
+              <span>Streamlined administrative tasks and improved reporting accuracy for the client, Myanmar Association of Japan Alumni (MAJA).</span>
+            </div>
+            <div class="achievement-item">
+              <mat-icon>stars</mat-icon>
+              <span>Awarded the President's Award for Best System Development Award</span>
+            </div>
+            <div class="achievement-item">
+              <mat-icon>link</mat-icon>
+              <a href="https://www.jlpt-maja.org.mm/?language=en" target="_blank">https://www.jlpt-maja.org.mm</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="experience-item">
+        <div class="experience-header">
+          <div class="title-wrapper">
+            <h3 class="job-title">Junior Programmer</h3>
+          </div>
+          <div class="date-info">
+
+            <span class="date">{{ formatDateRange(experienceDates.junior_programmer.start, experienceDates.junior_programmer.end) }}</span>
+            <span class="duration">{{ calculateDuration(experienceDates.junior_programmer.start, experienceDates.junior_programmer.end) }}</span>
+          </div>
+        </div>
+        <div class="company-brief">
+          <div class="company-row">
+            <mat-icon class="brief-icon">business</mat-icon>
+            <span>DIR-ACE Technology</span>
+
+          </div>
+          <div class="company-row">
+            <mat-icon class="brief-icon">location_on</mat-icon>
+            <span>Yangon, Myanmar</span>
+          </div>
+
+        </div>
+
+        <ul>
+          <li>Streamlined daily trade processing by developing a new function and user interface for pre-trade calculations.</li>
+          <li>Developed automation programs using Shell Script and VBA tools to streamline workflows.</li>
+          <li>Automated comprehensive testing of the stock price derivative calculation system using Selenium.</li>
+          <li>Independently identified problems, analyzed impact areas, and reporting survey documents.</li>
+          <li>Developed common Stored Procedures with a shell script for efficient database interactions.</li>
+          <li>Utilized Oracle SQL for code refactoring and database performance optimization.</li>
+        </ul>
+
+        <div class="tools-section">
+          <strong class="section-title">Tools:</strong>
+          <div class="tools-container">
+            <span class="tool-chip">Java 8</span>
+            <span class="tool-chip">Java Swing</span>
+            <span class="tool-chip">Spring Boot</span>
+            <span class="tool-chip">JSP</span>
+            <span class="tool-chip">Shell Script</span>
+            <span class="tool-chip">SQL</span>
+            <span class="tool-chip">Git</span>
+            <span class="tool-chip">REST API</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="experience-item">
+        <div class="experience-header">
+          <div class="title-wrapper">
+            <h3 class="job-title">Junior Programmer (Internship)</h3>
+          </div>
+          <div class="date-info">
+
+            <span class="date">{{ formatDateRange(experienceDates.internship.start, experienceDates.internship.end) }}</span>
+            <span class="duration">{{ calculateDuration(experienceDates.internship.start, experienceDates.internship.end) }}</span>
+          </div>
+        </div>
+        <div class="company-brief">
+          <div class="company-row">
+            <mat-icon class="brief-icon">business</mat-icon>
+            <span>DIR-ACE Technology</span>
+
+          </div>
+          <div class="company-row">
+            <mat-icon class="brief-icon">location_on</mat-icon>
+            <span>Yangon, Myanmar</span>
+          </div>
+
+        </div>
+
+        <h4 class="project-title">Developed Attendance Management System</h4>
+
+        <ul>
+          <li>Collaborated with senior developers to design and implement a comprehensive attendance management system.</li>
+          <li>Created an ER diagram and designed a relational database using MySQL for efficient data storage and retrieval.</li>
+          <li>Implemented user interface (UI) functionalities using JSP, HTML, CSS, jQuery, and Bootstrap for a user-friendly experience.</li>
+          <li>Developed user registration, role management, and reporting features to ensure secure access and data visualization.</li>
+          <li>Utilized version control (SVN) for code management and collaboration.</li>
+        </ul>
+
+        <div class="tools-section">
+          <strong class="section-title">Tools:</strong>
+          <div class="tools-container">
+            <span class="tool-chip">Java 8</span>
+            <span class="tool-chip">Spring MVC</span>
+            <span class="tool-chip">MyBatis</span>
+            <span class="tool-chip">JSP</span>
+            <span class="tool-chip">Jasper Reports</span>
+            <span class="tool-chip">MySQL</span>
+            <span class="tool-chip">SVN</span>
+            <span class="tool-chip">HTML</span>
+            <span class="tool-chip">CSS</span>
+            <span class="tool-chip">jQuery</span>
+            <span class="tool-chip">Bootstrap</span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</div> 

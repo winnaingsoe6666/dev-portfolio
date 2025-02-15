@@ -1,0 +1,73 @@
+<div class="sidebar" [@sidebarAnimation]>
+  <div class="profile-section">
+    <div class="profile-image">
+      <img [src]="profileImage" alt="Win Naing Soe" (error)="handleImageError($event)" #profileImg>
+      <div class="profile-border"></div>
+    </div>
+    <h2 class="name">Win Naing Soe</h2>
+    <p class="title">Software Engineer</p>
+  </div>
+
+  <nav class="navigation">
+    <a routerLink="/home" routerLinkActive="active" class="nav-item">
+      <div class="icon-wrapper">
+        <mat-icon>home</mat-icon>
+      </div>
+      <span>Home</span>
+      <div class="active-indicator"></div>
+    </a>
+    <a routerLink="/about" routerLinkActive="active" class="nav-item">
+      <div class="icon-wrapper">
+        <mat-icon>person</mat-icon>
+      </div>
+      <span>About</span>
+      <div class="active-indicator"></div>
+    </a>
+    <a routerLink="/resume" routerLinkActive="active" class="nav-item">
+      <div class="icon-wrapper">
+        <mat-icon>description</mat-icon>
+      </div>
+      <span>Resume</span>
+      <div class="active-indicator"></div>
+    </a>
+    <a routerLink="/education" routerLinkActive="active" class="nav-item">
+      <div class="icon-wrapper">
+        <mat-icon>school</mat-icon>
+      </div>
+      <span>Education</span>
+      <div class="active-indicator"></div>
+    </a>
+    <a routerLink="/portfolio" routerLinkActive="active" class="nav-item">
+      <div class="icon-wrapper">
+        <mat-icon>work</mat-icon>
+      </div>
+      <span>Portfolio</span>
+      <div class="active-indicator"></div>
+    </a>
+    <a routerLink="/contact" routerLinkActive="active" class="nav-item">
+      <div class="icon-wrapper">
+        <mat-icon>mail</mat-icon>
+      </div>
+      <span>Contact</span>
+      <div class="active-indicator"></div>
+    </a>
+  </nav>
+
+  <div class="social-links">
+    <a href="https://github.com/winnaingsoe6666" target="_blank" class="social-item">
+      <mat-icon svgIcon="github"></mat-icon>
+    </a>
+    <a href="https://www.linkedin.com/in/win-naing-soe" target="_blank" class="social-item">
+      <mat-icon svgIcon="linkedin"></mat-icon>
+    </a>
+    <a href="https://line.me/ti/p/tGMYc6ra0E" target="_blank" class="social-item">
+      <mat-icon svgIcon="line"></mat-icon>
+    </a>
+    <a href="https://www.facebook.com/profile.php?id=100079095523088" target="_blank" class="social-item">
+      <mat-icon svgIcon="facebook"></mat-icon>
+    </a>
+    <a href="mailto:winnaingsoe6666@gmail.com" class="social-item">
+      <mat-icon svgIcon="gmail"></mat-icon>
+    </a>
+  </div>
+</div> 
