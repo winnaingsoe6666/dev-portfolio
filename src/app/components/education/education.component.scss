@@ -1,0 +1,286 @@
+.education-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  min-height: 100vh;
+  background: #f8faf9;
+  color: #2c3e50;
+}
+
+.title {
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  position: relative;
+  color: #045748;
+  
+  &:after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    width: 50px;
+    height: 3px;
+    background: linear-gradient(to right, #045748, transparent);
+  }
+}
+
+.education-item {
+  background: white;
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+  margin-bottom: 1rem;
+  
+  .education-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0rem;
+    
+    .title-wrapper {
+      .degree-title {
+        display: inline-block;
+        background: #309a87;
+        color: white;
+        padding: 0.6rem 1.2rem;
+        border-radius: 8px;
+        font-size: 1rem;
+        font-weight: 500;
+        margin: 0;
+        transition: all 0.3s ease;
+
+        &:hover {
+          background: #056857;
+          transform: translateY(-2px);
+          box-shadow: 0 4px 12px rgba(4, 87, 72, 0.2);
+        }
+      }
+    }
+    
+    .date-info {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 0.3rem;
+      
+      .date {
+        background: #e8f5f3;
+        padding: 0.4rem 0.8rem;
+        border-radius: 20px;
+        color: #045748;
+        font-size: 0.85rem;
+      }
+      
+      .duration {
+        color: #718096;
+        font-size: 0.85rem;
+        font-style: italic;
+      }
+    }
+  }
+
+  .university-brief {
+    background: #ffffff;
+    padding: 0.6rem 1.2rem;
+    padding-top: 0.5rem;
+    //border-radius: 0 8px 8px 0;
+    //border-left: 3px solid #045748;
+    margin: 0.8rem 0;
+    margin-top: 0rem;
+
+    .university-row {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      
+      &:not(:last-child) {
+        margin-bottom: 0.3rem;
+      }
+
+      .brief-icon {
+        color: #045748;
+        font-size: 0.9rem;
+        width: 0.9rem;
+        height: 0.9rem;
+      }
+
+      span {
+        color: #2c3e50;
+        font-size: 0.85rem;
+      }
+    }
+  }
+
+  .achievements-section {
+    margin-top: 1.5rem;
+    background: #f8faf9;
+    padding: 1rem;
+    border-radius: 8px;
+
+    .achievement-header {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+      color: #045748;
+
+      mat-icon {
+        font-size: 1.2rem;
+        width: 1.2rem;
+        height: 1.2rem;
+      }
+    }
+
+    .achievement-content {
+      .achievement-item {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        margin-bottom: 0.8rem;
+
+        mat-icon {
+          color: #045748;
+          font-size: 1rem;
+          width: 1rem;
+          height: 1rem;
+        }
+
+        span {
+          color: #4a5568;
+          font-size: 0.9rem;
+        }
+      }
+    }
+  }
+}
+
+.certificates-section {
+  margin-top: 3rem;
+
+  h2 {
+    color: #045748;
+    margin-bottom: 1.5rem;
+    font-size: 1.8rem;
+  }
+}
+
+.certificate-item {
+  background: white;
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+  margin-bottom: 1.5rem;
+
+  .certificate-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+
+    .certificate-title {
+      display: inline-block;
+      background: #045748;
+      color: white;
+      padding: 0.6rem 1.2rem;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: 500;
+      margin: 0;
+      transition: all 0.3s ease;
+
+      &:hover {
+        background: #056857;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(4, 87, 72, 0.2);
+      }
+    }
+
+    .date-info {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 0.3rem;
+      
+      .date {
+        background: #e8f5f3;
+        padding: 0.4rem 0.8rem;
+        border-radius: 20px;
+        color: #045748;
+        font-size: 0.85rem;
+      }
+    }
+  }
+
+  .certificate-brief {
+    background: #f5f9f8;
+    padding: 0.6rem 0.8rem;
+    border-radius: 0 8px 8px 0;
+    border-left: 3px solid #045748;
+    margin: 0.8rem 0;
+
+    .certificate-row {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      
+      &:not(:last-child) {
+        margin-bottom: 0.3rem;
+      }
+
+      .brief-icon {
+        color: #045748;
+        font-size: 0.9rem;
+        width: 0.9rem;
+        height: 0.9rem;
+      }
+
+      span, a {
+        color: #2c3e50;
+        font-size: 0.85rem;
+      }
+
+      a {
+        text-decoration: none;
+        color: #045748;
+        
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .education-container {
+    padding: 1.5rem;
+  }
+
+  .title {
+    font-size: 2rem;
+  }
+
+  .education-item {
+    padding: 1.5rem;
+
+    .education-header {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1rem;
+      
+      .date-info {
+        align-items: flex-start;
+      }
+    }
+  }
+
+  .certificate-item {
+    padding: 1.5rem;
+
+    .certificate-header {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+  }
+}

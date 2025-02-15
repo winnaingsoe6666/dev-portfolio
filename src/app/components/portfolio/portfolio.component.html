@@ -1,0 +1,269 @@
+<div class="portfolio-container">
+  <h1 class="title" @fadeIn>Portfolio</h1>
+  
+  <p class="intro-text" @fadeIn>
+    Welcome to my Portfolio!  
+    This section highlights my experience in developing robust and scalable 
+    web and desktop applications, primarily using Java and Spring Boot.  
+    Explore the projects below to see examples of my work and technical skills in action.
+  </p>
+
+  <div class="filter-buttons" @fadeIn>
+    <button 
+      *ngFor="let category of categories"
+      [class.active]="selectedCategory === category"
+      (click)="filterProjects(category)">
+      {{category}}
+    </button>
+  </div>
+
+  <!-- Replace the projects-grid div with this -->
+  <div class="all-items-grid" *ngIf="selectedCategory === 'ALL'">
+    <!-- Development items -->
+    <mat-card *ngFor="let dev of developments" class="item-card development-card" @fadeIn>
+      <div class="development-image">
+        <img [src]="dev.image" [alt]="dev.title">
+        <button mat-icon-button class="view-image-btn" (click)="openImageViewer(dev.image, dev.title)">
+          <mat-icon>fullscreen</mat-icon>
+        </button>
+      </div>
+      <mat-card-content>
+        <h3>{{dev.title}}</h3>
+        <p class="development-description">{{dev.description}}</p>
+        
+        <div class="technologies">
+          <mat-icon class="tech-icon">code</mat-icon>
+          <div class="tech-tags">
+            <span class="tech-tag" *ngFor="let tech of dev.technologies">
+              {{tech}}
+            </span>
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  
+    <!-- Recognition items -->
+    <mat-card *ngFor="let recognition of recognitions" class="item-card recognition-card" @fadeIn>
+      <div class="recognition-image">
+        <img [src]="recognition.image" [alt]="recognition.title">
+        <button mat-icon-button class="view-image-btn" (click)="openImageViewer(recognition.image, recognition.title)">
+          <mat-icon>fullscreen</mat-icon>
+        </button>
+      </div>
+      <mat-card-content>
+        <div class="recognition-header">
+          <h3>{{recognition.title}}</h3>
+          <div class="recognition-meta">
+            <span class="date">{{recognition.date}}</span>
+          </div>
+        </div>
+  
+        <div class="organization-info">
+          <mat-icon class="org-icon">business</mat-icon>
+          <span>{{recognition.organization}}</span>
+        </div>
+  
+        <p class="recognition-description">{{recognition.description}}</p>
+  
+        <div class="credential-info" *ngIf="recognition.credentialId">
+          <div class="credential-row">
+            <mat-icon>badge</mat-icon>
+            <span>{{recognition.credentialId}}</span>
+          </div>
+          <a *ngIf="recognition.credentialUrl" 
+             [href]="recognition.credentialUrl" 
+             target="_blank" 
+             class="credential-link">
+            <mat-icon>link</mat-icon>
+            <span>View Credential</span>
+          </a>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  
+    <!-- Book items -->
+    <mat-card *ngFor="let book of allBooks" class="item-card book-card" @fadeIn>
+      <div class="book-image-container">
+        <img [src]="book.image" [alt]="book.title">
+        <button mat-icon-button class="view-image-btn" (click)="openImageViewer(book.image, book.title)">
+          <mat-icon>fullscreen</mat-icon>
+        </button>
+      </div>
+      <mat-card-content>
+        <div class="book-header">
+          <h3>{{book.title}}</h3>
+          <div class="book-meta">
+            <span class="date">{{book.readDate}}</span>
+          </div>
+        </div>
+  
+        <div class="author-info">
+          <mat-icon class="author-icon">person</mat-icon>
+          <span>{{book.author}}</span>
+        </div>
+  
+        <p class="book-description">{{book.description}}</p>
+  
+        <div class="book-rating">
+          <mat-icon *ngFor="let star of [1,2,3,4,5]" 
+                    [class.filled]="star <= book.rating">
+            star
+          </mat-icon>
+        </div>
+  
+        <div class="book-review">
+          <mat-icon>format_quote</mat-icon>
+          <p>{{book.review}}</p>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+  <div class="books-section" *ngIf="selectedCategory === 'BOOKS'" @fadeIn>
+    <!-- IT Books -->
+    <h2 class="section-title">Technical Books</h2>
+    <div class="books-grid">
+      <mat-card *ngFor="let book of itBooks" class="book-card" @fadeIn>
+        <div class="book-image-container">
+          <img [src]="book.image" [alt]="book.title">
+          <button mat-icon-button class="view-image-btn" (click)="openImageViewer(book.image, book.title)">
+            <mat-icon>fullscreen</mat-icon>
+          </button>
+        </div>
+        <mat-card-content>
+          <div class="book-header">
+            <h3>{{book.title}}</h3>
+            <div class="book-meta">
+              <span class="date">{{book.readDate}}</span>
+            </div>
+          </div>
+
+          <div class="author-info">
+            <mat-icon class="author-icon">person</mat-icon>
+            <span>{{book.author}}</span>
+          </div>
+
+          <p class="book-description">{{book.description}}</p>
+
+          <div class="book-rating">
+            <mat-icon *ngFor="let star of [1,2,3,4,5]" 
+                      [class.filled]="star <= book.rating">
+              star
+            </mat-icon>
+          </div>
+
+          <div class="book-review">
+            <mat-icon>format_quote</mat-icon>
+            <p>{{book.review}}</p>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+
+    <!-- Non-IT Books -->
+    <h2 class="section-title">Non-Technical Books</h2>
+    <div class="books-grid">
+      <mat-card *ngFor="let book of nonItBooks" class="book-card" @fadeIn>
+        <div class="book-image-container">
+          <img [src]="book.image" [alt]="book.title">
+          <button mat-icon-button class="view-image-btn" (click)="openImageViewer(book.image, book.title)">
+            <mat-icon>fullscreen</mat-icon>
+          </button>
+        </div>
+        <mat-card-content>
+          <div class="book-header">
+            <h3>{{book.title}}</h3>
+            <div class="book-meta">
+              <span class="date">{{book.readDate}}</span>
+            </div>
+          </div>
+
+          <div class="author-info">
+            <mat-icon class="author-icon">person</mat-icon>
+            <span>{{book.author}}</span>
+          </div>
+
+          <p class="book-description">{{book.description}}</p>
+
+          <div class="book-rating">
+            <mat-icon *ngFor="let star of [1,2,3,4,5]" 
+                      [class.filled]="star <= book.rating">
+              star
+            </mat-icon>
+          </div>
+
+          <div class="book-review">
+            <mat-icon>format_quote</mat-icon>
+            <p>{{book.review}}</p>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+
+  <!-- Add this section for recognitions -->
+  <div class="recognitions-grid" *ngIf="selectedCategory === 'RECOGNITION'">
+    <mat-card *ngFor="let recognition of recognitions" class="recognition-card" @fadeIn>
+      <div class="recognition-image">
+        <img [src]="recognition.image" [alt]="recognition.title">
+        <button mat-icon-button class="view-image-btn" (click)="openImageViewer(recognition.image, recognition.title)">
+          <mat-icon>fullscreen</mat-icon>
+        </button>
+      </div>
+      <mat-card-content>
+        <div class="recognition-header">
+          <h3>{{recognition.title}}</h3>
+          <div class="recognition-meta">
+            <span class="date">{{recognition.date}}</span>
+          </div>
+        </div>
+
+        <div class="organization-info">
+          <mat-icon class="org-icon">business</mat-icon>
+          <span>{{recognition.organization}}</span>
+        </div>
+
+        <p class="recognition-description">{{recognition.description}}</p>
+
+        <div class="credential-info" *ngIf="recognition.credentialId">
+          <div class="credential-row">
+            <mat-icon>badge</mat-icon>
+            <span>{{recognition.credentialId}}</span>
+          </div>
+          <a *ngIf="recognition.credentialUrl" 
+             [href]="recognition.credentialUrl" 
+             target="_blank" 
+             class="credential-link">
+            <mat-icon>link</mat-icon>
+            <span>View Credential</span>
+          </a>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+  <!-- Add this section for developments -->
+  <div class="developments-grid" *ngIf="selectedCategory === 'DEVELOPMENT'">
+    <mat-card *ngFor="let dev of developments" class="development-card" @fadeIn>
+      <div class="development-image">
+        <img [src]="dev.image" [alt]="dev.title">
+        <button mat-icon-button class="view-image-btn" (click)="openImageViewer(dev.image, dev.title)">
+          <mat-icon>fullscreen</mat-icon>
+        </button>
+      </div>
+      <mat-card-content>
+        <h3>{{dev.title}}</h3>
+        <p class="development-description">{{dev.description}}</p>
+        
+        <div class="technologies">
+          <mat-icon class="tech-icon">code</mat-icon>
+          <div class="tech-tags">
+            <span class="tech-tag" *ngFor="let tech of dev.technologies">
+              {{tech}}
+            </span>
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

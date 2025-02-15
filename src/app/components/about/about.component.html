@@ -1,0 +1,133 @@
+<div class="about-container">
+  <h1 class="title" @fadeIn>About Me</h1>
+  
+  <div class="profile-section" @fadeIn>
+    <div class="description-section">
+      <h2>Software Engineer / Backend Developer</h2>
+      <p class="description">
+        Software Engineer with over 5 years of experience in designing and developing Windows and Web applications
+        from initial to final deliverable. Passionate about learning new technologies and happy to make things happen for
+        users with strong ability to analyze complex projects and make clean requirements for other team members.
+      </p>
+    </div>
+  </div>
+
+  <div class="content-wrapper">
+    <div class="info-sections">
+      <ng-container *ngIf="show">
+        <!-- First Row -->
+        <div class="info-item" *ngIf="items.length > 0" @itemAnimation>
+          <div class="info-icon">📧</div>
+          <div class="info-content">
+            <strong>EMAIL:</strong>
+            <span>winnaingsoe6666&#64;gmail.com</span>
+          </div>
+        </div>
+
+        <div class="info-item" *ngIf="items.length > 1" @itemAnimation>
+          <div class="info-icon">🔗</div>
+          <div class="info-content">
+            <strong>LINKEDIN:</strong>
+            <a href="#" target="_blank">View Profile</a>
+          </div>
+        </div>
+
+        <!-- Second Row -->
+        <div class="info-item" *ngIf="items.length > 2" @itemAnimation>
+          <div class="info-icon">📱</div>
+          <div class="info-content">
+            <strong>PHONE:</strong>
+            <span>+66 930 608 914</span>
+          </div>
+        </div>
+
+        <div class="info-item" *ngIf="items.length > 3" @itemAnimation>
+          <div class="info-icon">💻</div>
+          <div class="info-content">
+            <strong>GITHUB:</strong>
+            <a href="#" target="_blank">View Profile</a>
+          </div>
+        </div>
+
+        <!-- Third Row -->
+        <div class="info-item" *ngIf="items.length > 4" @itemAnimation>
+          <div class="info-icon">💭</div>
+          <div class="info-content">
+            <strong>LINE:</strong>
+            <span>winnaingsoe.mm</span>
+          </div>
+        </div>
+
+        <div class="info-item" *ngIf="items.length > 5" @itemAnimation>
+          <div class="info-icon">💬</div>
+          <div class="info-content">
+            <strong>WHATSAPP:</strong>
+            <span>+66960308914</span>
+          </div>
+        </div>
+
+        <!-- Spacer -->
+        <div class="info-spacer"></div>
+
+        <!-- Fourth Row -->
+        <div class="info-item" *ngIf="items.length > 6" @itemAnimation>
+          <div class="info-icon">🌏</div>
+          <div class="info-content">
+            <strong>NATIONALITY:</strong>
+            <span>Myanmar</span>
+          </div>
+        </div>
+
+        <div class="info-item" *ngIf="items.length > 7" @itemAnimation>
+          <div class="info-icon">🎂</div>
+          <div class="info-content">
+            <strong>AGE:</strong>
+            <span>{{ age }}</span>
+          </div>
+        </div>
+
+        <!-- Fifth Row -->
+        <div class="info-item" *ngIf="items.length > 8" @itemAnimation>
+          <div class="info-icon">🎓</div>
+          <div class="info-content">
+            <strong>DEGREE:</strong>
+            <span>Bachelor of Engineering (Electronics)</span>
+          </div>
+        </div>
+
+        <div class="info-item" *ngIf="items.length > 9" @itemAnimation>
+          <div class="info-icon">⏰</div>
+          <div class="info-content">
+            <strong>AVAILABILITY (Notice period):</strong>
+            <span>1 month</span>
+          </div>
+        </div>
+
+      </ng-container>
+    </div>
+
+    <div class="profile-image">
+      <div class="thinking-bubble">
+        <div class="equation">
+          <span class="code">0.1 + 0.2 == 0.3</span>
+          <span class="result">❌</span>
+        </div>
+        <div class="question">Why is this false? Magic...?</div>
+      </div>
+      <img src="assets/about.png" alt="About illustration">
+    </div>
+  </div>
+
+  <!-- Current Position Section -->
+  <!-- <div class="current-work" @fadeIn>
+    <div class="work-content">
+      <h3>Current Position</h3>
+      <p>
+        Currently, I am working as a Senior Software Engineer at 
+        <a href="https://dir-ace.com" target="_blank" class="company-link">DIR-ACE Technology</a> 
+        in Myanmar, a Japanese-based company specializing in stock exchange operation development.
+      </p>
+    </div>
+  </div> -->
+  <!-- End Current Position Section -->
+</div> 
