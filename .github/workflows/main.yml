@@ -1,9 +1,6 @@
 name: Deploy to GitHub Pages
 
 on:
-  push:
-    branches:
-      - dev  # Change this to your branch name
   pull_request:
     branches:
       - main  # Change this to your branch name
