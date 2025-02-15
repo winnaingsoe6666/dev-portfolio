@@ -4,6 +4,11 @@ on:
   push:
     branches:
       - dev  # Change this to your branch name
+  pull_request:
+    branches:
+      - main  # Change this to your branch name
+    types:
+      - closed  # Runs only when the PR is merged
 
 jobs:
   deploy:
