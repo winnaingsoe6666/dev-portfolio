@@ -1,9 +1,11 @@
 name: Deploy to GitHub Pages
 
 on:
-  push:
+  pull_request:
     branches:
       - main  # Change this to your branch name
+    types:
+      - closed
 
 jobs:
   deploy:
