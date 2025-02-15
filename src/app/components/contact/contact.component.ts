@@ -7,6 +7,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-contact',
@@ -35,7 +36,8 @@ import { MatInputModule } from '@angular/material/input';
     MatIconModule,
     ReactiveFormsModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    CommonModule
   ]
 })
 export class ContactComponent {
