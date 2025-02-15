@@ -28,10 +28,10 @@ jobs:
         run: npm install @emailjs/browser
 
       - name: Build project
-        run: npm run build  # Adjust if your build command is different
+        run: ng serve  # Adjust if your build command is different
 
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          branch: gh-pages  # Deployment branch
+          branch: main  # Deployment branch
           folder: dist  # Adjust if output folder is different (e.g., build)
