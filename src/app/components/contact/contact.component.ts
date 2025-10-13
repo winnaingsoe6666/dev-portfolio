@@ -17,7 +17,10 @@ import { CommonModule } from '@angular/common';
     trigger('fadeIn', [
       transition(':enter', [
         style({ opacity: 0, transform: 'translateY(20px)' }),
-        animate('0.6s ease-out', style({ opacity: 1, transform: 'translateY(0)' }))
+        animate('300ms ease-out', style({ opacity: 1, transform: 'translateY(0)' }))
+      ]),
+      transition(':leave', [
+        animate('200ms ease-in', style({ opacity: 0, transform: 'translateY(20px)' }))
       ])
     ]),
     trigger('listAnimation', [
@@ -25,7 +28,7 @@ import { CommonModule } from '@angular/common';
         query('.info-item', [
           style({ opacity: 0, transform: 'translateX(-20px)' }),
           stagger(100, [
-            animate('0.5s ease-out', style({ opacity: 1, transform: 'translateX(0)' }))
+            animate('300ms ease-out', style({ opacity: 1, transform: 'translateX(0)' }))
           ])
         ], { optional: true })
       ])
