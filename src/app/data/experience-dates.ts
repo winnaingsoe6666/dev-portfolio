@@ -7,6 +7,11 @@ export interface ExperienceDate {
 //end: 'present'
 
 export const ExperienceDates = {
+  senior_full_stack_software_engineer: {
+    start: new Date('2025-01-30'),
+    end: new Date()
+  },
+
   senior_software_engineer: {
     start: new Date('2023-04-01'),
     end: new Date('2025-01-29')
