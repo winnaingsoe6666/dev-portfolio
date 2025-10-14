@@ -35,5 +35,10 @@ export const ExperienceDates = {
   internship: {
     start: new Date('2019-11-01'),
     end: new Date('2020-02-29')
+  },
+
+  personal_projects: {
+    start: new Date('2025-02-01'),
+    end: new Date()
   }
 } as const;

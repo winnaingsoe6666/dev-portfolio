@@ -93,7 +93,7 @@ export class PortfolioComponent {
     {
       id: 2,
       title: 'The Guy from Yangon',
-      author: 'Ye Htut Win',
+      author: 'Khet Zaw',
       image: 'assets/images/books/Guy_From_Yng.jpg',
       description: 'A compelling narrative about life, culture, and experiences in Yangon, Myanmar.',
       readDate: '2023',
@@ -111,6 +111,17 @@ export class PortfolioComponent {
       rating: 5,
       review: 'An excellent resource for learning Java, with its unique visual approach and practical examples making complex concepts easier to understand.',
       category: 'IT'
+    }
+  ];
+
+  products: any[] = [
+    {
+      id: 1,
+      title: 'Clima Smart Weather App',
+      image: 'assets/images/product/clima.jpg',
+      description: 'Developed a native Android weather application with Jetpack Compose, implementing custom Canvas animations and robust location-based services for real-time data fetching and display.',
+      technologies: ['kotlin', 'Jetpack Compose', 'Canvas', 'Retrofit' ],
+      category: 'product'
     }
   ];
 

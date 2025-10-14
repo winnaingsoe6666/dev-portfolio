@@ -41,6 +41,28 @@
         </div>
       </mat-card-content>
     </mat-card>
+
+    <mat-card *ngFor="let product of products" class="item-card product-card" @fadeIn>
+      <div class="product-image">
+        <img [src]="product.image" [alt]="product.title">
+        <button mat-icon-button class="view-image-btn" (click)="openImageViewer(product.image, product.title)">
+          <mat-icon>fullscreen</mat-icon>
+        </button>
+      </div>
+      <mat-card-content>
+        <h3>{{product.title}}</h3>
+        <p class="product-description">{{product.description}}</p>
+        
+        <div class="technologies">
+          <mat-icon class="tech-icon">code</mat-icon>
+          <div class="tech-tags">
+            <span class="tech-tag" *ngFor="let tech of product.technologies">
+              {{tech}}
+            </span>
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
   
     <!-- Recognition items -->
     <mat-card *ngFor="let recognition of recognitions" class="item-card recognition-card" @fadeIn>
@@ -259,6 +281,30 @@
           <mat-icon class="tech-icon">code</mat-icon>
           <div class="tech-tags">
             <span class="tech-tag" *ngFor="let tech of dev.technologies">
+              {{tech}}
+            </span>
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+  <div class="products-grid" *ngIf="selectedCategory === 'PRODUCT'">
+    <mat-card *ngFor="let product of products" class="item-card product-card" @fadeIn>
+      <div class="product-image">
+        <img [src]="product.image" [alt]="product.title">
+        <button mat-icon-button class="view-image-btn" (click)="openImageViewer(product.image, product.title)">
+          <mat-icon>fullscreen</mat-icon>
+        </button>
+      </div>
+      <mat-card-content>
+        <h3>{{product.title}}</h3>
+        <p class="product-description">{{product.description}}</p>
+        
+        <div class="technologies">
+          <mat-icon class="tech-icon">code</mat-icon>
+          <div class="tech-tags">
+            <span class="tech-tag" *ngFor="let tech of product.technologies">
               {{tech}}
             </span>
           </div>
