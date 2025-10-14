@@ -1,7 +1,7 @@
 import { ApplicationConfig, importProvidersFrom } from '@angular/core';
-import { provideRouter, RouteReuseStrategy } from '@angular/router';
+import { provideRouter } from '@angular/router';
 import { routes } from './app.routes';
-import { CustomRouteReuseStrategy } from './custom-route-reuse-strategy';
+//import { CustomRouteReuseStrategy } from './custom-route-reuse-strategy';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { provideHttpClient } from '@angular/common/http';
 import { MatButtonModule } from '@angular/material/button';
@@ -27,7 +27,7 @@ const materialModules = [
 export const appConfig: ApplicationConfig = {
   providers: [
     provideRouter(routes),
-    { provide: RouteReuseStrategy, useClass: CustomRouteReuseStrategy },
+   // { provide: RouteReuseStrategy, useClass: CustomRouteReuseStrategy },
     provideAnimations(),
     provideHttpClient(),
     importProvidersFrom(materialModules)

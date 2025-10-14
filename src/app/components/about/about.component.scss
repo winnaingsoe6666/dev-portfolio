@@ -117,8 +117,17 @@
     border-color: rgba(0,0,0,0.05);
     
     .info-icon {
-      transform: scale(1.1);
-      background-color: #e8f5f3;
+      flex-shrink: 0;
+      width: 36px; // Slightly larger for better spacing
+      height: 36px; // Slightly larger for better spacing
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #f8f9fa;
+      border-radius: 12px;
+      margin-right: 1rem; // More space
+      transition: all 0.3s ease;
+      font-size: 1.2rem; // This makes the emoji icons bigger!
     }
     
     .info-content {

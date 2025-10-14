@@ -22,20 +22,19 @@ import { ResumeComponent } from './components/resume/resume.component';
 import { PortfolioComponent } from './components/portfolio/portfolio.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { EducationComponent } from './components/education/education.component';
-import { SidebarComponent } from './components/sidebar/sidebar.component';
-import { AppComponent } from './app.component';
 
 
-const materialModules = [
-  MatButtonModule,
-  MatCardModule,
-  MatIconModule,
-  MatInputModule,
-  MatToolbarModule,
-  MatSnackBarModule,
-  MatProgressSpinnerModule,
-  MatDialogModule
-];
+
+// const materialModules = [
+//   MatButtonModule,
+//   MatCardModule,
+//   MatIconModule,
+//   MatInputModule,
+//   MatToolbarModule,
+//   MatSnackBarModule,
+//   MatProgressSpinnerModule,
+//   MatDialogModule
+// ];
 
 
 export const routes: Routes = [
@@ -48,26 +47,26 @@ export const routes: Routes = [
   { path: 'contact', component: ContactComponent }
 ];
 
-@NgModule({
-  imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
-    ReactiveFormsModule,
-    RouterModule.forRoot(routes),
-    AppComponent,
-    HomeComponent,
-    AboutComponent,
-    PortfolioComponent,
-    ContactComponent,
-    ResumeComponent,
-    SidebarComponent,
-    ...materialModules,
-    HttpClientModule
-  ],
-  declarations: [
+// @NgModule({
+//   imports: [
+//     BrowserModule,
+//     BrowserAnimationsModule,
+//     ReactiveFormsModule,
+//     RouterModule.forRoot(routes),
+//     AppComponent,
+//     HomeComponent,
+//     AboutComponent,
+//     PortfolioComponent,
+//     ContactComponent,
+//     ResumeComponent,
+//     SidebarComponent,
+//     ...materialModules,
+//     HttpClientModule
+//   ],
+//   declarations: [
     
-  ],
-  providers: [],
-  bootstrap: []
-})
-export class AppModule { }
+//   ],
+//   providers: [],
+//   bootstrap: []
+// })
+//export class AppModule { }

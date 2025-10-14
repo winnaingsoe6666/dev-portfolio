@@ -1,9 +1,10 @@
-<div class="about-container">
-  <h1 class="title" @fadeIn>About Me</h1>
+<div class="about-container" @fadeSlideIn>
   
-  <div class="profile-section" @fadeIn>
+  <h1 class="title anim-item">About Me</h1>
+  
+  <div class="profile-section anim-item">
     <div class="description-section">
-      <h2>Software Engineer / Backend Developer</h2>
+      <h2>Software Engineer / Code Magician</h2>
       <p class="description">
         Full-Stack Software Engineer with 5+ years of experience specializing in FinTech and core banking systems. Skilled in developing scalable, secure, and high-performance applications using Java, Spring Boot, Angular, and Docker. Proven ability to lead teams, optimize processes, and deliver end-to-end solutions for both enterprise and open-source environments. Passionate about modernizing legacy systems and integrating emerging technologies like AI.
       </p>
@@ -12,98 +13,49 @@
 
   <div class="content-wrapper">
     <div class="info-sections">
-      <ng-container *ngIf="show">
-        <!-- First Row -->
-        <div class="info-item" *ngIf="items.length > 0" @itemAnimation>
-          <div class="info-icon">📧</div>
-          <div class="info-content">
-            <strong>EMAIL:</strong>
-            <span>winnaingsoe6666&#64;gmail.com</span>
-          </div>
+      <div class="info-item anim-item">
+        <div class="info-icon">🌏</div>
+        <div class="info-content">
+          <strong>BASED IN:</strong>
+          <span>Chiang Mai, Thailand</span>
         </div>
-
-        <div class="info-item" *ngIf="items.length > 1" @itemAnimation>
-          <div class="info-icon">🔗</div>
-          <div class="info-content">
-            <strong>LINKEDIN:</strong>
-            <a href="https://www.linkedin.com/in/win-naing-soe" target="_blank">linkedin.com/in/win-naing-soe</a>
-          </div>
+      </div>
+      <div class="info-item anim-item">
+        <div class="info-icon">☕</div>
+        <div class="info-content">
+          <strong>PRIMARY FUEL:</strong>
+          <span>Freshly Brewed Coffee</span>
         </div>
-
-        <!-- Second Row -->
-        <div class="info-item" *ngIf="items.length > 2" @itemAnimation>
-          <div class="info-icon">📱</div>
-          <div class="info-content">
-            <strong>PHONE:</strong>
-            <span>+66 930 608 914</span>
-          </div>
+      </div>
+      <div class="info-item anim-item">
+        <div class="info-icon">😂</div>
+        <div class="info-content">
+          <strong>FLUENT IN:</strong>
+          <span>Java, TypeScript, SQL & Sarcasm</span>
         </div>
-
-        <div class="info-item" *ngIf="items.length > 3" @itemAnimation>
-          <div class="info-icon">💻</div>
-          <div class="info-content">
-            <strong>GITHUB:</strong>
-            <a href="https://github.com/winnaingsoe6666" target="_blank">github.com/winnaingsoe6666</a>
-          </div>
+      </div>
+      <div class="info-item anim-item">
+        <div class="info-icon">💻</div>
+        <div class="info-content">
+          <strong>SUPERPOWER:</strong>
+          <span>Turning Caffeine into Code</span>
         </div>
-
-        <!-- Third Row -->
-        <div class="info-item" *ngIf="items.length > 4" @itemAnimation>
-          <div class="info-icon">💭</div>
-          <div class="info-content">
-            <strong>LINE:</strong>
-            <span>winnaingsoe.mm</span>
-          </div>
+      </div>
+      <div class="info-item anim-item">
+        <div class="info-icon">⛰️</div>
+        <div class="info-content">
+          <strong>ALSO FOUND:</strong>
+          <span>Exploring mountains & new tech</span>
         </div>
-
-        <div class="info-item" *ngIf="items.length > 5" @itemAnimation>
-          <div class="info-icon">💬</div>
-          <div class="info-content">
-            <strong>WHATSAPP:</strong>
-            <span>+66960308914</span>
-          </div>
+      </div>
+      <div class="info-item anim-item">
+        <div class="info-icon">👉</div>
+        <div class="info-content">
+          <strong>LET'S TALK:</strong>
+          <span>My contact page has all the details!</span>
         </div>
-
-        <!-- Spacer -->
-        <div class="info-spacer"></div>
-
-        <!-- Fourth Row -->
-        <!-- <div class="info-item" *ngIf="items.length > 6" @itemAnimation>
-          <div class="info-icon">🌏</div>
-          <div class="info-content">
-            <strong>NATIONALITY:</strong>
-            <span>Myanmar</span>
-          </div>
-        </div> -->
-
-        <!-- <div class="info-item" *ngIf="items.length > 7" @itemAnimation>
-          <div class="info-icon">🎂</div>
-          <div class="info-content">
-            <strong>AGE:</strong>
-            <span>{{ age }}</span>
-          </div>
-        </div> -->
-
-        <!-- Fifth Row -->
-        <div class="info-item" *ngIf="items.length > 8" @itemAnimation>
-          <div class="info-icon">🎓</div>
-          <div class="info-content">
-            <strong>DEGREE:</strong>
-            <span>Bachelor of Engineering (Electronics)</span>
-          </div>
-        </div>
-
-        <!-- <div class="info-item" *ngIf="items.length > 9" @itemAnimation>
-          <div class="info-icon">⏰</div>
-          <div class="info-content">
-            <strong>AVAILABILITY (Notice period):</strong>
-            <span>1 month</span>
-          </div>
-        </div> -->
-
-      </ng-container>
+      </div>
     </div>
-
     <div class="profile-image">
       <div class="thinking-bubble">
         <div class="equation">
@@ -116,16 +68,15 @@
     </div>
   </div>
 
-  <!-- Current Position Section -->
-  <!-- <div class="current-work" @fadeIn>
+  <div class="current-work anim-item">
     <div class="work-content">
-      <h3>Current Position</h3>
+      <h3>My Current Mission</h3>
       <p>
-        Currently, I am working as a Senior Software Engineer at 
-        <a href="https://dir-ace.com" target="_blank" class="company-link">DIR-ACE Technology</a> 
-        in Myanmar, a Japanese-based company specializing in stock exchange operation development.
+        I'm currently a Senior Software Engineer at 
+        <a href="https://dir-ace.com" target="_blank" class="company-link">DIR-ACE Technology</a>, 
+        a Japan-based company where I specialize in building robust stock exchange operation systems.
       </p>
     </div>
-  </div> -->
-  <!-- End Current Position Section -->
-</div> 
+  </div>
+
+</div>

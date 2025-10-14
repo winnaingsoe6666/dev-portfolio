@@ -1,96 +1,76 @@
-<div class="contact-container">
-  <h1 class="title" @fadeIn>Contact</h1>
+<div class="contact-container" @fadeSlideIn>
+  
+  <h1 class="title anim-item">Contact</h1>
   
   <div class="contact-content">
-    <div class="contact-info" @listAnimation>
-      <h2>Contact Information</h2>
+    <div class="contact-info">
+      <h2 class="anim-item">Contact Information</h2>
       <div class="info-items">
-        <div class="info-item">
-          <mat-icon>location_on</mat-icon>
+        <div class="info-item anim-item">
+          <mat-icon svgIcon="location"></mat-icon>
           <div>
             <h3>Location:</h3>
             <p>Chiang Mai, Thailand 50230</p>
           </div>
         </div>
         
-        <div class="info-item">
-          <mat-icon>phone</mat-icon>
+        <div class="info-item anim-item">
+          <mat-icon svgIcon="phone"></mat-icon>
           <div>
             <h3>Phone:</h3>
             <p>+66 930 608 914</p>
-
           </div>
         </div>
         
-        <div class="info-item">
-          <mat-icon>whatsapp</mat-icon>
+        <div class="info-item anim-item">
+          <mat-icon svgIcon="whatsapp"></mat-icon>
           <div>
             <h3>WhatsApp:</h3>
             <p>+66960308914</p>
           </div>
         </div>
-
         
-        <div class="info-item">
-          <mat-icon>chat</mat-icon>
+        <div class="info-item anim-item">
+          <mat-icon svgIcon="line"></mat-icon>
           <div>
             <h3>Line:</h3>
             <p>winnaingsoe.mm</p>
           </div>
         </div>
         
-        <div class="info-item">
-          <mat-icon>email</mat-icon>
+        <div class="info-item anim-item">
+          <mat-icon svgIcon="gmail"></mat-icon>
           <div>
             <h3>Email:</h3>
             <p>winnaingsoe6666&#64;gmail.com</p>
           </div>
         </div>
-
       </div>
     </div>
 
-    <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class="contact-form" @fadeIn>
-      <h2>Send Message</h2>
-      
-      <mat-form-field appearance="outline">
-        <mat-label>Name</mat-label>
-        <input matInput formControlName="name" placeholder="Your name">
-        <mat-error *ngIf="contactForm.get('name')?.hasError('required')">
-          Name is required
-        </mat-error>
-      </mat-form-field>
-
-      <mat-form-field appearance="outline">
-        <mat-label>Email</mat-label>
-        <input matInput formControlName="email" placeholder="Your email" type="email">
-        <mat-error *ngIf="contactForm.get('email')?.hasError('required')">
-          Email is required
-        </mat-error>
-        <mat-error *ngIf="contactForm.get('email')?.hasError('email')">
-          Please enter a valid email
-        </mat-error>
-      </mat-form-field>
-
-      <mat-form-field appearance="outline">
-        <mat-label>Subject</mat-label>
-        <input matInput formControlName="subject" placeholder="Subject">
-        <mat-error *ngIf="contactForm.get('subject')?.hasError('required')">
-          Subject is required
-        </mat-error>
-      </mat-form-field>
-
-      <mat-form-field appearance="outline">
-        <mat-label>Message</mat-label>
-        <textarea matInput formControlName="message" rows="6" placeholder="Your message"></textarea>
-        <mat-error *ngIf="contactForm.get('message')?.hasError('required')">
-          Message is required
-        </mat-error>
-      </mat-form-field>
-
-      <button mat-raised-button color="primary" type="submit" [disabled]="contactForm.invalid || isSubmitting">
-        {{ isSubmitting ? 'Sending...' : 'Send Message' }}
-      </button>
-    </form>
+    <div class="direct-contact">
+      <h2 class="anim-item">Reach Out Directly</h2>
+      <p class="direct-contact-intro anim-item">
+        Prefer not to use a form? No problem. Choose your preferred method below to get the conversation started.
+      </p>
+      <div class="contact-actions">
+        <a href="mailto:winnaingsoe6666@gmail.com" class="contact-action-item anim-item">
+          <mat-icon svgIcon="gmail"></mat-icon>
+          <span>Send an Email</span>
+        </a>
+        <a href="https://wa.me/66960308914" target="_blank" rel="noopener noreferrer" class="contact-action-item anim-item">
+          <mat-icon svgIcon="whatsapp"></mat-icon>
+          <span>Message on WhatsApp</span>
+        </a>
+        <a href="https://line.me/ti/p/~winnaingsoe.mm" target="_blank" rel="noopener noreferrer" class="contact-action-item anim-item">
+          <mat-icon svgIcon="line"></mat-icon>
+          <span>Chat on Line</span>
+        </a>
+        <a href="https://www.linkedin.com/in/win-naing-soe" target="_blank" rel="noopener noreferrer" class="contact-action-item anim-item">
+          <mat-icon svgIcon="linkedin"></mat-icon>
+          <span>Connect on LinkedIn</span>
+        </a>
+      </div>
+    </div>
   </div>
-</div> 
+</div>
