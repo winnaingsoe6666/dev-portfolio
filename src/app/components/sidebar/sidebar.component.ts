@@ -60,6 +60,18 @@ export class SidebarComponent implements OnInit {
       'gmail',
       this.domSanitizer.bypassSecurityTrustResourceUrl('assets/icons/gmail.svg')
     );
+    this.matIconRegistry.addSvgIcon(
+      'phone',
+      this.domSanitizer.bypassSecurityTrustResourceUrl('assets/icons/phone.svg')
+    );
+    this.matIconRegistry.addSvgIcon(
+      'location',
+      this.domSanitizer.bypassSecurityTrustResourceUrl('assets/icons/location.svg')
+    );
+    this.matIconRegistry.addSvgIcon(
+      'whatsapp',
+      this.domSanitizer.bypassSecurityTrustResourceUrl('assets/icons/whatsapp.svg')
+    );
   }
 
   ngOnInit() {

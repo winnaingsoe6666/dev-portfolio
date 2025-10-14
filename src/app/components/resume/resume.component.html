@@ -1,7 +1,7 @@
 <div class="resume-container">
-  <h1 class="title" @fadeIn>Resume</h1>
+  <h1 class="title" @fadeIn>Interactive Career Timeline</h1>
   
-  <div class="resume-header" @fadeIn>
+  <!-- <div class="resume-header" @fadeIn>
     <p class="intro">
       Software Engineer with over 4 years of experience in designing and developing Windows and Web applications 
       from initial to final deliverable. Passionate about learning new technologies and happy to make things happen 
@@ -13,11 +13,70 @@
         <span>Download PDF</span>
       </span>
     </a>
-  </div>
+  </div> -->
 
   <div class="resume-content">
     <section class="resume-section" @listAnimation>
-      <h2>Professional Experience</h2>
+      <!-- <h2>Professional Experience</h2> -->
+      <div class="experience-item">
+        <div class="experience-header">
+          <div class="title-wrapper">
+            <h3 class="job-title">Senior Full-Stack Software Engineer</h3>
+          </div>
+          <div class="date-info">
+            <span class="date">{{ formatDateRange(experienceDates.senior_full_stack_software_engineer.start, experienceDates.senior_full_stack_software_engineer.end) }}</span>
+            <span class="duration">{{ calculateDuration(experienceDates.senior_full_stack_software_engineer.start, experienceDates.senior_full_stack_software_engineer.end) }}</span>
+          </div>
+        </div>
+        <div class="company-brief">
+          <div class="company-row">
+            <mat-icon class="brief-icon">business</mat-icon>
+            <span>MSIS Company (Myanmar)</span>
+          </div>
+          <div class="company-row">
+            <mat-icon class="brief-icon">location_on</mat-icon>
+            <span>Remote</span>
+          </div>
+        </div>
+        <ul>
+          <li>Developed and enhanced features on the Mifos Fineract open-source banking platform.</li>
+          <li>Built scalable microservices with Java Spring Boot and Spring Security.</li>
+          <li>Containerized deployments with Docker for better scalability and CI/CD integration.</li>
+          <li>Created automated schedulers for recurring financial batch jobs.</li>
+          <li>Developed responsive Angular JS and Angular TS frontends for financial modules.</li>
+          <li>Engineered and maintained scalable RESTful APIs using Spring Boot and Spring Security, supporting the core functionality of an open-source banking platform.</li>
+        </ul>
+
+        <div class="tools-section">
+          <strong class="section-title">Key Tools:</strong>
+          <div class="tools-container">
+            <span class="tool-chip">Java </span>
+            <span class="tool-chip">Spring Boot </span>
+            <span class="tool-chip">Spring Security </span>
+            <span class="tool-chip">Spring Batch </span>
+            <span class="tool-chip">Docker </span>
+            <span class="tool-chip">Gradle </span>
+            <span class="tool-chip">Angular </span>
+            <span class="tool-chip">Node.js </span>
+            <span class="tool-chip">CI/CD </span>
+            <span class="tool-chip">AWS LightSail</span>
+          </div>
+        </div>
+
+        <div class="achievements-section">
+          <div class="achievement-header">
+            <mat-icon>emoji_events</mat-icon>
+            <strong>Achievements</strong>
+          </div>
+          <div class="achievement-content">
+            <div class="achievement-item">
+              <mat-icon>stars</mat-icon>
+              <span>Lunched successfully 3 more microservices banking projects</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <div class="experience-item">
         <div class="experience-header">
           <div class="title-wrapper">
@@ -39,14 +98,11 @@
           </div>
         </div>
         <ul>
-          <li>Collaborated with clients on design outlines, creating detailed documentation after incorporating their feedback.</li>
+          <li>Led offshore projects for Japanese clients - Stock Exchange operation, managing the full software development lifecycle from requirements gathering to deployment.</li>
+          <li>Collaborated with clients on design outlines, creating detailed design documentation.</li>
           <li>Developed and maintained secure, scalable web applications (Java, Spring Boot), desktop applications (Java Swing), automation tools (shell scripts), and stored procedures.</li>
-          <li>Implemented advanced security measures and reduce vulnerabilities by 65%.</li>
-          <li>Conducted unit testing, integration testing, and performance testing.</li>
-          <li>Created comprehensive technical documentation for clear understanding and easy maintenance.</li>
-          <li>Created detailed RD explanation sections for clear project understanding by team members.</li>
-          <li>Monitored project progress and resource utilization, maximizing efficiency.</li>
-          <li>Improved code quality through code reviews and mentored junior developers, ensuring their continuous professional growth.</li>
+          <li>Developed automation tools using Shell Script and VBA, increasing operational efficiency for client-side data processing tasks.</li>
+          <li>Mentored a team of total 11 members including 4 junior developers, conducting regular code reviews, mentoring junior developers and enforcing testing standards.</li>
         </ul>
 
         <h3 class="mt-4">Developed and implemented software solutions:</h3>
@@ -115,10 +171,10 @@
           </div>
         </div>
         <ul>
+          <li>Re-engineered and optimized complex PostgreSQL stored procedures for SIMM calculations, reducing query execution time and enabling faster, more accurate initial margin reporting for financial analysts.</li>
+          <li>Designed and developed an interactive KPI reporting dashboard using Angular, providing management with real-time insights into project cost, schedule, and resource allocation.</li>
           <li>Contributed to REST API development using Java for improved system capabilities.</li>
-          <li>Refactored complex stored procedures for SIMM calculations, enhancing code readability and optimizing performance for faster initial margin (IM) calculations.</li>
-          <li>Troubleshooted and resolved JBoss server configuration issues for optimal performance.</li>
-          <li>Built a reporting system for KPIs, cost & schedule management for all offshore projects, and interactive dashboards using Angular.</li>
+          <li>Resolved critical JBoss server configuration issues, enhancing system stability and optimizing application performance.</li>
           <li>Adapted PostgreSQL Stored Procedures for use with SQL Server, ensuring database compatibility across platforms.</li>
         </ul>
         <div class="tools-section">
@@ -162,13 +218,10 @@
         <h4 class="project-title">JLPT Registration System Project</h4>
         
         <ul>
-          <li>Developed a multi-tiered web application for online submission of Japanese Language Proficiency Test (JLPT) forms.</li>
-          <li>Implemented user interfaces and backend services for applicants, operators, and administrators.</li>
-          <li>Integrated payment gateway (2C2P) for handling online transactions.</li>
-          <li>Managed form applies, test site setup, test term management, and reporting functionalities.</li>
-          <li>Ensured the application's performance, security, and reliability by conducting endto-end testing, unit testing, integration testing, performance testing, and load testing.</li>
-          <li>Designed the system to handle high concurrency, supporting thousands of simultaneous user transactions and ensuring smooth performance during peak usage times.</li>
-          <li>Created comprehensive technical documentations, Software Requirements Specification (SRS) and deployment guides.</li>
+          <li>Engineered the backend architecture for a high-traffic JLPT registration portal using Spring Boot, successfully handling over 5,000 concurrent users during peak registration periods with zero downtime.</li>
+          <li>Integrated the 2C2P payment gateway and improved form management workflows.</li>
+          <li>Conducted end-to-end testing, unit testing, integration testing, performance testing, and load testing for peak concurrency.</li>
+          <li>Created comprehensive technical documentation, Software Requirements Specification (SRS) and deployment guides.</li>
         </ul>
 
         <div class="tools-section">
@@ -240,12 +293,10 @@
         </div>
 
         <ul>
-          <li>Streamlined daily trade processing by developing a new function and user interface for pre-trade calculations.</li>
-          <li>Developed automation programs using Shell Script and VBA tools to streamline workflows.</li>
-          <li>Automated comprehensive testing of the stock price derivative calculation system using Selenium.</li>
-          <li>Independently identified problems, analyzed impact areas, and reporting survey documents.</li>
+          <li>Streamlined daily trade processing workflows by developing a new Java Swing UI and function for pre-trade calculations.</li>
+          <li>Developed a comprehensive automated testing suite using Selenium for a stock price derivative calculation system.</li>
+          <li>Contributed to the refactoring of legacy Oracle SQL code, improving database performance and maintainability.</li>
           <li>Developed common Stored Procedures with a shell script for efficient database interactions.</li>
-          <li>Utilized Oracle SQL for code refactoring and database performance optimization.</li>
         </ul>
 
         <div class="tools-section">
@@ -313,6 +364,39 @@
             <span class="tool-chip">Bootstrap</span>
           </div>
         </div>
+      </div>
+
+      <div class="experience-item">
+        <div class="experience-header">
+          <div class="title-wrapper">
+            <h3 class="job-title">Freelance & Personal Projects</h3>
+          </div>
+        </div>
+          <!-- <div class="date-info">
+
+            <span class="date">{{ formatDateRange(experienceDates.personal_projects.start, experienceDates.personal_projects.end) }}</span>
+            <span class="duration">{{ calculateDuration(experienceDates.personal_projects.start, experienceDates.personal_projects.end) }}</span>
+          </div>
+        </div>
+        <div class="company-brief">
+          <div class="company-row">
+            <mat-icon class="brief-icon">business</mat-icon>
+            <span>DIR-ACE Technology</span>
+
+          </div>
+          <div class="company-row">
+            <mat-icon class="brief-icon">location_on</mat-icon>
+            <span>Yangon, Myanmar</span>
+          </div>
+
+        </div> -->
+
+        <br>
+        <h4 class="project-title">Full-Stack Booking System :</h4>
+        <p>Architected and developed a full-stack booking system using Spring Boot and React, featuring a reactive UI built with Tailwind CSS and Vite. Currently integrating an AI chatbot to enhance user support.</p>
+        <br>
+        <h4 class="project-title">Native Android Weather App :</h4>
+        <p>Developed a native Android weather application with Jetpack Compose, implementing custom Canvas animations and robust location-based services for real-time data fetching and display.</p>
       </div>
     </section>
   </div>

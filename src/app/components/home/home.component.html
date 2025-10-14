@@ -5,8 +5,12 @@
     <div class="cloud cloud-3"></div>
     <div class="cloud cloud-4"></div>
     
+    <div class="cloud cloud-5"></div>
+    <div class="cloud cloud-6"></div>
+    <div class="cloud cloud-7"></div>
+    <div class="cloud cloud-8"></div>
+    
     <div class="landscape">
-
       <div class="hill hill-1">
           <div class="tree tree-green">
             <div class="trunk"></div>
@@ -77,17 +81,14 @@
 
   <div class="content-area">
     <div class="text-content" @slideIn>
-      <h1 class="hello">Hello, {{ getGreeting() }} </h1>
-      <h2 class="welcome">Welcome to My Portfolio!</h2>
-      <h2 class="intro">I'm <span class="highlight">Win Naing Soe</span>,</h2>
-      <h3 class="role">Software Engineer</h3>
+      <h1 class="hello">Hello, {{ getGreeting() }}</h1>
+      <h2 class="intro">I'm <strong>Win Naing Soe</strong></h2>
+      <h3 class="role">Full-Stack Software Engineer</h3>
       
       <p class="bio">
-        With over five years of experience as a passionate full-stack developer, I transform ideas into powerful Java web applications and scalable backend solutions. From designing architecture and automation tools to optimizing stock exchange operations and streamlining CI/CD pipelines, I thrive on building efficient, high-quality software. With a strong focus on testing and performance, I ensure every solution meets the highest standards.
+        Specializing in FinTech and core banking systems, I engineer robust and scalable solutions that drive business success. My passion is turning complex problems into clean, efficient code.
       </p>
       
-      <p class="cta-text">Explore my work and let's create something amazing together!</p>
-
       <div class="cta-buttons" @buttonFadeUp>
         <button class="contact-btn">
           <span class="btn-content">
@@ -96,38 +97,18 @@
           </span>
         </button>
         <button class="cv-btn">
-          <span class="btn-content">
-            <i class="fas fa-file-alt"></i>
-            GET CV
-          </span>
+          <a class="download-btn" href="/assets/resume.pdf" target="_blank">
+            <span class="btn-content">
+              <i class="fas fa-file-alt"></i>
+              GET CV
+            </span>
+          </a>
         </button>
       </div>
     </div>
     
-    <div class="decorative-elements">
-      <!-- <div class="coffee-area" @floatAnimation>
-        <div class="coffee-steam"></div>
-        <div class="coffee-cup"></div>
-        <div class="coffee-coaster"></div>
-      </div>
-       -->
-      <!-- <div class="plant-container" @growAnimation>
-        <div class="plant">
-          <div class="leaf leaf-1"></div>
-          <div class="leaf leaf-2"></div>
-          <div class="leaf leaf-3"></div>
-        </div>
-      </div>
-      
-      <div class="keyboard" @slideUpFade>
-        <div class="key-row" *ngFor="let row of [1,2,3,4]"></div>
-      </div>
-      
-      <div class="accessories" @floatAnimation>
-        <div class="ruler"></div>
-        <div class="glasses"></div>
-        <div class="clips"></div>
-      </div> -->
+    <div class="image-content" @popIn>
+      <img src="assets/profile.png" alt="Win Naing Soe Avatar">
     </div>
   </div>
-</div> 
+</div>
