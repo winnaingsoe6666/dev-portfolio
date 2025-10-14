@@ -48,28 +48,41 @@
 .content-wrapper {
   display: flex;
   gap: 2rem;
+  align-items: flex-start; // Aligns items to the top
+  margin-bottom: 3rem; // Add some space before the skills dashboard
 }
 
-.info-section {
-  flex: 1;
+.info-sections {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.8rem;
+  flex: 2; // Allows this section to take up more space (approx 66%)
+  max-width: 800px;
 }
 
 .profile-image {
-  position: fixed;
-  right: 5%;
-  bottom: 10%;
-  width: 200px;
-  z-index: 1;
-  animation: fadeInUp 1s ease-out forwards;
-  opacity: 0;
+  flex: 1; // Allows this section to take up remaining space (approx 33%)
+  position: relative; // Changed from 'fixed'
+  width: 100%; // Let flexbox control the width
+  max-width: 180px; // Prevents it from getting too large
+  margin: 0 auto; // Helps with centering if needed
+  bottom: -40px; // Slightly lift the image
   
+  /* REMOVED these properties:
+   - right: 5%;
+   - bottom: 10%;
+   - z-index: 1;
+  */
+
   img {
     width: 100%;
     height: auto;
     display: block;
     filter: drop-shadow(0 10px 15px rgba(0, 0, 0, 0.1));
+    animation: bob 6s ease-in-out infinite; // Your existing animation
   }
 
+  /* No change needed for the shadow effect */
   &::after {
     content: '';
     position: absolute;
@@ -193,51 +206,7 @@
   grid-column: 1 / -1;
 }
 
-.current-work {
-  margin-top: 3rem;
-  background-color: rgba(255, 255, 255, 0.9);
-  border-radius: 15px;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-  overflow: hidden;
-  
-  .work-content {
-    padding: 2rem;
-    
-    h3 {
-      color: #045748;
-      margin-bottom: 1rem;
-      font-size: 1.5rem;
-    }
 
-    p {
-      color: #2c3e50;
-      line-height: 1.7;
-    }
-
-    .company-link {
-      color: #045748;
-      text-decoration: none;
-      font-weight: 500;
-      position: relative;
-      
-      &:after {
-        content: '';
-        position: absolute;
-        bottom: -2px;
-        left: 0;
-        width: 100%;
-        height: 2px;
-        background-color: #045748;
-        transform: scaleX(0);
-        transition: transform 0.3s ease;
-      }
-      
-      &:hover:after {
-        transform: scaleX(1);
-      }
-    }
-  }
-}
 
 @media (max-width: 1200px) {
   .info-sections {
@@ -245,9 +214,9 @@
   }
 
   .profile-image {
-    width: 200px;
+    width: 150px;
     right: 40px;
-    bottom: 30px;
+    bottom: 20px;
   }
 }
 
@@ -276,7 +245,7 @@
 
   .profile-image {
     position: static;
-    width: 180px;
+    width: 140px;
     margin: 2rem auto;
   }
 }
@@ -311,9 +280,10 @@
 }
 
 .thinking-bubble {
+  // Adjust position relative to the new container
   position: absolute;
-  top: -120px;
-  right: 40px;
+  top: -100px; // Adjust vertical position
+  right: -20px; // Adjust horizontal position
   background: white;
   padding: 15px 20px;
   border-radius: 25px;
@@ -326,7 +296,7 @@
     content: '';
     position: absolute;
     bottom: -15px;
-    right: 30px;
+    right: 20px;
     width: 20px;
     height: 20px;
     background: white;
@@ -338,7 +308,7 @@
     content: '';
     position: absolute;
     bottom: -35px;
-    right: 30px;
+    right: 40px;
     width: 10px;
     height: 10px;
     background: white;
@@ -384,3 +354,182 @@
 .profile-image img {
   animation: bob 6s ease-in-out infinite;
 } 
+
+/* === SKILLS DASHBOARD STYLES === */
+
+.skills-dashboard {
+  margin-top: 3rem;
+
+  .section-title {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: bold;
+    color: #045748;
+    margin-bottom: 0.5rem;
+  }
+
+  .section-subtitle {
+    text-align: center;
+    color: #4a5568;
+    margin-bottom: 2rem;
+  }
+}
+
+.dashboard-content {
+  background-color: white;
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.06);
+}
+
+.skill-filters {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-bottom: 2rem;
+
+  button {
+    border: none;
+    padding: 0.6rem 1.25rem;
+    border-radius: 9999px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    background-color: #eef2f7; /* slate-200 */
+    color: #334155; /* slate-700 */
+
+    &:hover {
+      background-color: #dce4ed;
+    }
+
+    &.active {
+      background-color: #3b82f6; /* blue-500 */
+      color: white;
+      box-shadow: 0 4px 14px 0 rgba(59, 130, 246, 0.39);
+    }
+  }
+}
+
+.chart-container {
+  position: relative;
+  width: 100%;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+  height: 450px; // Adjusted height for better visibility
+}
+
+// Responsive adjustments
+@media (max-width: 768px) {
+  .skills-dashboard .section-title {
+    font-size: 1.8rem;
+  }
+  
+  .dashboard-content {
+    padding: 1.5rem;
+  }
+
+  .chart-container {
+    height: 350px;
+  }
+}
+@media (max-width: 992px) { // Changed breakpoint for a better wrap
+  .content-wrapper {
+    flex-direction: column; // Stack items vertically
+    align-items: center; // Center items
+  }
+
+  .info-sections {
+    width: 100%; // Take full width on smaller screens
+    margin-bottom: 3rem; // Add space between sections when stacked
+  }
+
+  .profile-image {
+    // position: static is the default, no need to declare
+    width: 220px; // Give it a fixed size on mobile
+    margin: 2rem auto; // Center it with margin
+  }
+}
+
+@media (max-width: 768px) {
+  // Keep your existing mobile styles for info-sections and others
+  .info-sections {
+    grid-template-columns: 1fr;
+  }
+}
+
+.focus-section {
+  margin-top: 4rem;
+  padding-bottom: 2rem;
+
+  .section-title {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: bold;
+    color: #045748;
+    margin-bottom: 3rem;
+  }
+}
+
+.focus-cards {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+.focus-card {
+  background: white;
+  border-radius: 16px;
+  padding: 2rem 1.5rem;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+  border: 1px solid rgba(0, 0, 0, 0.03);
+
+  &:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 24px rgba(4, 87, 72, 0.1);
+  }
+
+  .focus-icon {
+    margin: 0 auto 1.5rem auto;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: rgba(4, 87, 72, 0.07);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    
+    svg {
+      width: 32px;
+      height: 32px;
+    }
+  }
+
+  h3 {
+    font-size: 1.25rem;
+    color: #045748;
+    margin-bottom: 0.75rem;
+  }
+
+  p {
+    color: #4a5568;
+    line-height: 1.6;
+    font-size: 0.95rem;
+  }
+}
+@media (min-width: 768px) {
+  .focus-cards {
+    grid-template-columns: repeat(2, 1fr); /* 2x2 grid for tablets and desktops */
+  }
+}
+
+@media (min-width: 1200px) {
+  .focus-cards {
+    grid-template-columns: repeat(4, 1fr); /* 4x1 grid for very wide screens */
+  }
+}

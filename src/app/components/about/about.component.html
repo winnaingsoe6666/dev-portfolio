@@ -4,7 +4,7 @@
   
   <div class="profile-section anim-item">
     <div class="description-section">
-      <h2>Software Engineer / Code Magician</h2>
+      <h2>Software Engineer</h2>
       <p class="description">
         Full-Stack Software Engineer with 5+ years of experience specializing in FinTech and core banking systems. Skilled in developing scalable, secure, and high-performance applications using Java, Spring Boot, Angular, and Docker. Proven ability to lead teams, optimize processes, and deliver end-to-end solutions for both enterprise and open-source environments. Passionate about modernizing legacy systems and integrating emerging technologies like AI.
       </p>
@@ -56,6 +56,7 @@
         </div>
       </div>
     </div>
+
     <div class="profile-image">
       <div class="thinking-bubble">
         <div class="equation">
@@ -68,15 +69,69 @@
     </div>
   </div>
 
-  <div class="current-work anim-item">
-    <div class="work-content">
-      <h3>My Current Mission</h3>
-      <p>
-        I'm currently a Senior Software Engineer at 
-        <a href="https://dir-ace.com" target="_blank" class="company-link">DIR-ACE Technology</a>, 
-        a Japan-based company where I specialize in building robust stock exchange operation systems.
-      </p>
+  <section class="skills-dashboard anim-item" id="skills">
+    <h2 class="section-title">Skills Dashboard</h2>
+    <p class="section-subtitle">Filter by category to see a visual representation of key skills.</p>
+    
+    <div class="dashboard-content">
+      <div class="skill-filters">
+        <button *ngFor="let category of skillsData.categories"
+                (click)="filterSkills(category)"
+                [class.active]="category === activeCategory">
+          {{ category }}
+        </button>
+      </div>
+      <div class="chart-container">
+        <canvas #skillsChartCanvas id="skillsChart"></canvas>
+      </div>
     </div>
-  </div>
+  </section>
+  <section class="focus-section anim-item">
+    <h2 class="section-title">My Focus Areas</h2>
+    <div class="focus-cards">
+      
+      <div class="focus-card">
+        <div class="focus-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#045748"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0l4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4z"/></svg>
+        </div>
+        <h3>Backend Development</h3>
+        <p>
+          Engineering robust, scalable, and secure systems using Java and Spring Boot, with a focus on clean code and high performance for FinTech applications.
+        </p>
+      </div>
 
+      <div class="focus-card">
+        <div class="focus-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#045748"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93s3.05-7.44 7-7.93v15.86zm2-15.86c1.03.13 2 .45 2.87.93H13v-.93zM13 7h5.24c.25.31.48.65.68 1H13V7zm0 3h6.74c.08.33.15.66.19 1H13v-1zm0 3h6.93c-.04.34-.11.67-.19 1H13v-1zm0 3h5.93c-.2.35-.43.69-.68 1H13v-1zm-1 2.07c-.87.48-1.84.78-2.87.93v-.93H11v.93zM5.26 9h5.74V7H5.58c-.25-.31-.48-.65-.68-1H11v3H5.26zm0 3H11v-1H5.07c-.08-.33-.15-.66-.19-1H11v3zm0 3H11v-1H5.58c.2-.35.43.69.68 1H11v1z"/></svg>
+        </div>
+        <h3>System Architecture</h3>
+        <p>
+          Designing and implementing end-to-end solutions for core banking and stock exchange platforms, ensuring system integrity and efficient data flow.
+        </p>
+      </div>
+
+      <div class="focus-card">
+        <div class="focus-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#045748"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M19 9.3V4h-3v2.6L12 3 2 12h3v8h5v-6h4v6h5v-8h3l-4-3.7zM9 13c0-1.66 1.34-3 3-3s3 1.34 3 3-1.34 3-3 3-3-1.34-3-3z"/></svg>
+
+        </div>
+        <h3>Innovation & Modernization</h3>
+        <p>
+          Breathing new life into legacy systems by integrating emerging technologies like AI to enhance functionality, improve efficiency, and unlock new business value.
+        </p>
+      </div>
+
+      <div class="focus-card">
+        <div class="focus-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#045748"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
+        </div>
+        <h3>Mentorship & Quality</h3>
+        <p>
+          Leading development cycles, performing constructive code reviews, and mentoring junior engineers to maintain high standards of code quality and teamwork.
+        </p>
+      </div>
+
+    </div>
+  </section>
+  
 </div>
