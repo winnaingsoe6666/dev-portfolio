@@ -32,8 +32,8 @@ import { trigger, transition, style, animate, query, stagger } from '@angular/an
 export class SidebarComponent implements OnInit {
   @ViewChild('profileImg') profileImgElement!: ElementRef;
   
-  // Corrected path - removed 'src/'
   profileImage = 'assets/profile.png';
+  public isSidebarOpen = false; // State for mobile toggle
 
   constructor(
     private matIconRegistry: MatIconRegistry,
@@ -78,6 +78,11 @@ export class SidebarComponent implements OnInit {
     // Additional initialization logic if needed
   }
 
+  // New method to toggle the sidebar
+  toggleSidebar(): void {
+    this.isSidebarOpen = !this.isSidebarOpen;
+  }
+
   handleImageError(event: any) {
     console.error('Image failed to load:', this.profileImage);
     const img = event.target;
@@ -86,7 +91,6 @@ export class SidebarComponent implements OnInit {
     img.style.alignItems = 'center';
     img.style.justifyContent = 'center';
     
-    // Make the initials container look better
     const parent = img.parentElement;
     if (!parent.querySelector('.initials')) {
       const initialsContainer = document.createElement('div');
