@@ -123,7 +123,7 @@ export class PortfolioComponent {
       {
         id: 2, title: 'The Guy from Yangon', author: 'Khet Zaw', image: 'assets/images/books/Guy_From_Yng.jpg',
         description: 'A compelling narrative about life, culture, and experiences in Yangon, Myanmar.',
-        readDate: '2023', rating: 4, review: 'A fascinating perspective on Myanmar culture and society, offering unique insights into life in Yangon.',
+        readDate: '2023', rating: 5, review: 'A fascinating perspective on Myanmar culture and society, offering unique insights into life in Yangon.',
         category: 'BOOKS', type: 'BOOK'
       },
       {
