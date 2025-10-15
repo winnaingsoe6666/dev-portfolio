@@ -1,3 +1,4 @@
+/* --- STYLES FOR DESKTOP (Unchanged) --- */
 .sidebar {
   width: 280px;
   height: 100vh;
@@ -7,6 +8,9 @@
   flex-direction: column;
   position: fixed;
   border-right: 1px solid rgba(0, 0, 0, 0.05);
+  transform: translateX(0);
+  transition: transform 0.3s ease-in-out, width 0.3s ease-in-out; /* Added width transition */
+  z-index: 1000;
 }
 
 .profile-section {
@@ -14,6 +18,7 @@
   text-align: center;
   position: relative;
   padding-bottom: 1rem;
+  transition: opacity 0.3s ease-in-out; /* Added for smooth hide/show */
 
   &::after {
     content: '';
@@ -129,6 +134,7 @@
 
     span {
       font-weight: 500;
+      transition: opacity 0.3s ease; /* Added for smooth hide/show */
     }
 
     &:hover {
@@ -223,62 +229,98 @@
 }
 
 @keyframes spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
 }
 
 @keyframes moveInCircle {
-  0% {
-    transform: translate(0, 0);
-  }
-  25% {
-    transform: translate(10px, -10px);
-  }
-  50% {
-    transform: translate(0, -15px);
-  }
-  75% {
-    transform: translate(-10px, -10px);
-  }
-  100% {
-    transform: translate(0, 0);
-  }
+  0% { transform: translate(0, 0); }
+  25% { transform: translate(10px, -10px); }
+  50% { transform: translate(0, -15px); }
+  75% { transform: translate(-10px, -10px); }
+  100% { transform: translate(0, 0); }
 }
 
 @keyframes slideIn {
-  from {
-    transform: scaleY(0);
-  }
-  to {
-    transform: scaleY(1);
-  }
+  from { transform: scaleY(0); }
+  to { transform: scaleY(1); }
 }
 
-@media (max-width: 768px) {
+
+/* --- NEW STYLES for MOBILE/TABLET --- */
+/* Hide toggle button on desktop */
+.menu-toggle {
+  display: none;
+}
+.sidebar-overlay {
+  display: none;
+}
+
+/* -- Media Query for Tablet and Mobile -- */
+@media (max-width: 1024px) {
+  .menu-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    width: 50px;
+    height: 50px;
+    background: #fff;
+    border: none;
+    border-radius: 50%;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    z-index: 1001; /* Must be higher than sidebar */
+    cursor: pointer;
+    color: #008080;
+  }
+
   .sidebar {
-    width: 100%;
-    height: auto;
-    position: relative;
-  }
-
-  .profile-section {
-    padding: 1.5rem;
-
-    .profile-image {
-      width: 120px;
-      height: 120px;
-    }
-  }
-
-  .navigation {
-    padding: 1rem 0;
+    /* Make sidebar narrower for icon-only view */
+    width: 90px;
+    transform: translateX(-100%);
+    box-shadow: 0 0 30px rgba(0,0,0,0.1);
     
-    .nav-item {
-      padding: 0.5rem 1.5rem;
+    /* MODIFICATION: Hide profile section */
+    .profile-section {
+      display: none;
+    }
+    
+    /* MODIFICATION: Adjust nav items for icon-only */
+    .navigation .nav-item {
+      justify-content: center; /* Center the icon */
+      padding: 0.8rem 0;
+
+      /* Hide the text label */
+      span {
+        display: none;
+      }
+      
+      /* Remove margin that was for the text */
+      .icon-wrapper {
+        margin-right: 0;
+      }
+    }
+    
+    .social-links {
+      gap: 0.8rem;
     }
   }
-} 
+
+  /* When .open class is added, slide sidebar in */
+  .sidebar.open {
+    transform: translateX(0);
+  }
+
+  .sidebar-overlay {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 999; /* Below sidebar, above page content */
+  }
+}
