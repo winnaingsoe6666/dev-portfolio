@@ -1,13 +1,27 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { trigger, transition, style, animate, query, stagger, keyframes } from '@angular/animations';
 import { CommonModule } from '@angular/common';
+
+import { AboutComponent } from '../about/about.component';
+import { ResumeComponent } from '../resume/resume.component';
+import { EducationComponent } from '../education/education.component';
+import { PortfolioComponent } from '../portfolio/portfolio.component';
+import { ContactComponent } from '../contact/contact.component';
+import { ThemeService } from '../../services/theme.service';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
   standalone: true,
-  imports: [CommonModule],
+  imports: [
+    CommonModule,
+    AboutComponent,
+    ResumeComponent,
+    EducationComponent,
+    PortfolioComponent,
+    ContactComponent
+  ],
   animations: [
     trigger('fadeIn', [
       transition(':enter', [
@@ -67,8 +81,15 @@ import { CommonModule } from '@angular/common';
     ])
   ]
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit {
   state = 'start';
+  currentTheme = 'theme-day';
+
+  constructor(private themeService: ThemeService) {
+    this.themeService.currentTheme$.subscribe(theme => {
+      this.currentTheme = theme;
+    });
+  }
 
   ngOnInit() {
     setInterval(() => {
@@ -76,15 +97,5 @@ export class HomeComponent {
     }, 3000);
   }
 
-  getGreeting(): string {
-    const hour = new Date().getHours();
-    
-    if (hour >= 5 && hour < 12) {
-      return 'Good Morning';
-    } else if (hour >= 12 && hour < 17) {
-      return 'Good Afternoon';
-    } else {
-      return 'Good Evening';
-    }
-  }
+
 }
