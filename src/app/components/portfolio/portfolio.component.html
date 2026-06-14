@@ -1,81 +1,148 @@
-<div class="portfolio-container">
-  <h1 class="title" @fadeIn>Portfolio</h1>
+<div class="portfolio-wrapper">
+  <div class="portfolio-container">
+    <h1 class="title" @fadeIn>Portfolio</h1>
 
-  <p class="intro-text" @fadeIn>
-    I specialize in engineering high-performance, scalable solutions for the complex world of FinTech and core banking. This portfolio is a curated collection of my work, showcasing projects where I've leveraged technologies like Java, Spring Boot, and Angular to solve real-world problems. From enterprise-level systems to personal creations, each item demonstrates a commitment to clean code, robust architecture, and impactful results.
-  </p>
+    <p class="intro-text" @fadeIn>
+      Selected projects spanning FinTech, Core Banking, Enterprise Systems, and Modernization initiatives.
+    </p>
 
-  <div class="filter-buttons" @fadeIn>
-    <button
-      *ngFor="let category of categories"
-      [class.active]="selectedCategory === category"
-      (click)="filterProjects(category)">
-      {{ category }}
-    </button>
-  </div>
+    <div class="filter-buttons" @fadeIn>
+      <button
+        *ngFor="let category of categories"
+        [class.active]="selectedCategory === category"
+        (click)="filterProjects(category)">
+        {{ category }}
+      </button>
+    </div>
 
-  <div *ngIf="selectedCategory === 'ALL'">
-    <ng-container *ngFor="let category of categories">
-      <ng-container *ngIf="category !== 'ALL' && getItemsByCategory(category).length > 0">
-        <h2 class="section-title">{{ category | titlecase }}</h2>
-        <div class="items-grid" [@listAnimation]="getItemsByCategory(category).length">
-          <ng-container *ngFor="let item of getItemsByCategory(category)">
-            <ng-container [ngSwitch]="item.type">
-              <ng-container *ngSwitchCase="'DEVELOPMENT'" [ngTemplateOutlet]="projectCard" [ngTemplateOutletContext]="{$implicit: item}"></ng-container>
-              <ng-container *ngSwitchCase="'PRODUCT'" [ngTemplateOutlet]="projectCard" [ngTemplateOutletContext]="{$implicit: item}"></ng-container>
-              <ng-container *ngSwitchCase="'RECOGNITION'" [ngTemplateOutlet]="recognitionCard" [ngTemplateOutletContext]="{$implicit: item}"></ng-container>
-              <ng-container *ngSwitchCase="'BOOK'" [ngTemplateOutlet]="bookCard" [ngTemplateOutletContext]="{$implicit: item}"></ng-container>
+    <!-- DEVELOPMENT CATEGORY (Custom Layout with Featured vs Other) -->
+    <div *ngIf="selectedCategory === 'ALL' || selectedCategory === 'DEVELOPMENT'">
+      
+      <!-- Featured Projects -->
+      <h2 class="section-title">Featured Enterprise Projects</h2>
+      <div class="items-grid" [@listAnimation]="featuredDevelopmentItems.length">
+        <ng-container *ngFor="let item of featuredDevelopmentItems">
+          <ng-container [ngTemplateOutlet]="projectCard" [ngTemplateOutletContext]="{$implicit: item}"></ng-container>
+        </ng-container>
+      </div>
+
+      <!-- Other Projects -->
+      <h2 class="section-title" style="margin-top: 4rem;">Other Projects</h2>
+      <div class="items-grid" [@listAnimation]="otherDevelopmentItems.length">
+        <ng-container *ngFor="let item of otherDevelopmentItems">
+          <ng-container [ngTemplateOutlet]="projectCard" [ngTemplateOutletContext]="{$implicit: item}"></ng-container>
+        </ng-container>
+      </div>
+      
+    </div>
+
+    <!-- OTHER CATEGORIES (Standard Layout) -->
+    <div *ngIf="selectedCategory === 'ALL'">
+      <ng-container *ngFor="let category of categories">
+        <ng-container *ngIf="category !== 'ALL' && category !== 'DEVELOPMENT' && getItemsByCategory(category).length > 0">
+          <h2 class="section-title" style="margin-top: 4rem;">{{ category | titlecase }}</h2>
+          <div class="items-grid" [@listAnimation]="getItemsByCategory(category).length">
+            <ng-container *ngFor="let item of getItemsByCategory(category)">
+              <ng-container [ngSwitch]="item.type">
+                <ng-container *ngSwitchCase="'PRODUCT'" [ngTemplateOutlet]="productCard" [ngTemplateOutletContext]="{$implicit: item}"></ng-container>
+                <ng-container *ngSwitchCase="'RECOGNITION'" [ngTemplateOutlet]="recognitionCard" [ngTemplateOutletContext]="{$implicit: item}"></ng-container>
+                <ng-container *ngSwitchCase="'BOOK'" [ngTemplateOutlet]="bookCard" [ngTemplateOutletContext]="{$implicit: item}"></ng-container>
+              </ng-container>
             </ng-container>
-          </ng-container>
-        </div>
+          </div>
+        </ng-container>
       </ng-container>
-    </ng-container>
-  </div>
+    </div>
 
-  <div *ngIf="selectedCategory !== 'ALL'" class="items-grid" [@listAnimation]="filteredItems.length">
-    <ng-container *ngFor="let item of filteredItems">
-      <ng-container [ngSwitch]="item.type">
-        <ng-container *ngSwitchCase="'DEVELOPMENT'" [ngTemplateOutlet]="projectCard" [ngTemplateOutletContext]="{$implicit: item}"></ng-container>
-        <ng-container *ngSwitchCase="'PRODUCT'" [ngTemplateOutlet]="projectCard" [ngTemplateOutletContext]="{$implicit: item}"></ng-container>
-        <ng-container *ngSwitchCase="'RECOGNITION'" [ngTemplateOutlet]="recognitionCard" [ngTemplateOutletContext]="{$implicit: item}"></ng-container>
-        <ng-container *ngSwitchCase="'BOOK'" [ngTemplateOutlet]="bookCard" [ngTemplateOutletContext]="{$implicit: item}"></ng-container>
+    <div *ngIf="selectedCategory !== 'ALL' && selectedCategory !== 'DEVELOPMENT'" class="items-grid" [@listAnimation]="filteredItems.length">
+      <ng-container *ngFor="let item of filteredItems">
+        <ng-container [ngSwitch]="item.type">
+          <ng-container *ngSwitchCase="'PRODUCT'" [ngTemplateOutlet]="productCard" [ngTemplateOutletContext]="{$implicit: item}"></ng-container>
+          <ng-container *ngSwitchCase="'RECOGNITION'" [ngTemplateOutlet]="recognitionCard" [ngTemplateOutletContext]="{$implicit: item}"></ng-container>
+          <ng-container *ngSwitchCase="'BOOK'" [ngTemplateOutlet]="bookCard" [ngTemplateOutletContext]="{$implicit: item}"></ng-container>
+        </ng-container>
       </ng-container>
-    </ng-container>
+    </div>
   </div>
 </div>
 
+<!-- ================= TEMPLATES ================= -->
+
+<!-- NEW: Development Project Card (Case Study Style) -->
 <ng-template #projectCard let-item>
-  <mat-card class="item-card">
+  <div class="premium-card project-card">
     <div class="card-image-container">
       <img [src]="item.image" [alt]="item.title">
+      <div class="project-badges" *ngIf="item.badges && item.badges.length > 0">
+        <span class="project-badge" *ngFor="let badge of item.badges">{{ badge }}</span>
+      </div>
       <button mat-icon-button class="view-image-btn" (click)="openImageViewer(item.image, item.title)">
         <mat-icon>fullscreen</mat-icon>
       </button>
     </div>
-    <mat-card-content>
-      <h3>{{ item.title }}</h3>
-      <p class="card-description">{{ item.description }}</p>
-      <div class="technologies">
-        <mat-icon class="tech-icon">code</mat-icon>
+    
+    <div class="card-content-wrapper">
+      <h3 class="project-title">{{ item.title }}</h3>
+      
+      <div class="project-meta">
+        <div class="meta-row">
+          <span class="meta-label">Domain:</span>
+          <span class="meta-value">{{ item.domain }}</span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">Role:</span>
+          <span class="meta-value">{{ item.role }}</span>
+        </div>
+      </div>
+
+      <div class="project-impact">
+        <span class="impact-label">Impact:</span>
+        <p class="impact-text">{{ item.impact }}</p>
+      </div>
+
+      <div class="project-tech">
+        <span class="tech-label">Tech Stack:</span>
         <div class="tech-tags">
           <span class="tech-tag" *ngFor="let tech of item.technologies">{{ tech }}</span>
         </div>
       </div>
-    </mat-card-content>
-  </mat-card>
+    </div>
+  </div>
 </ng-template>
 
-<ng-template #recognitionCard let-item>
-  <mat-card class="item-card">
+<!-- Product Card (Old Style) -->
+<ng-template #productCard let-item>
+  <div class="premium-card basic-card">
     <div class="card-image-container">
       <img [src]="item.image" [alt]="item.title">
       <button mat-icon-button class="view-image-btn" (click)="openImageViewer(item.image, item.title)">
         <mat-icon>fullscreen</mat-icon>
       </button>
     </div>
-    <mat-card-content>
-      <div class="card-header">
-        <h3>{{ item.title }}</h3>
+    <div class="card-content-wrapper">
+      <h3 class="project-title">{{ item.title }}</h3>
+      <p class="card-description">{{ item.description }}</p>
+      <div class="project-tech" style="margin-top: auto;">
+        <div class="tech-tags">
+          <span class="tech-tag" *ngFor="let tech of item.technologies">{{ tech }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+<!-- Recognition Card -->
+<ng-template #recognitionCard let-item>
+  <div class="premium-card basic-card">
+    <div class="card-image-container">
+      <img [src]="item.image" [alt]="item.title">
+      <button mat-icon-button class="view-image-btn" (click)="openImageViewer(item.image, item.title)">
+        <mat-icon>fullscreen</mat-icon>
+      </button>
+    </div>
+    <div class="card-content-wrapper">
+      <div class="card-header-row">
+        <h3 class="project-title">{{ item.title }}</h3>
         <span class="date-badge">{{ item.date }}</span>
       </div>
       <div class="meta-info">
@@ -83,21 +150,22 @@
         <span>{{ item.organization }}</span>
       </div>
       <p class="card-description">{{ item.description }}</p>
-    </mat-card-content>
-  </mat-card>
+    </div>
+  </div>
 </ng-template>
 
+<!-- Book Card -->
 <ng-template #bookCard let-item>
-  <mat-card class="item-card">
+  <div class="premium-card basic-card">
     <div class="card-image-container book-image">
       <img [src]="item.image" [alt]="item.title">
       <button mat-icon-button class="view-image-btn" (click)="openImageViewer(item.image, item.title)">
         <mat-icon>fullscreen</mat-icon>
       </button>
     </div>
-    <mat-card-content>
-      <div class="card-header">
-        <h3>{{ item.title }}</h3>
+    <div class="card-content-wrapper">
+      <div class="card-header-row">
+        <h3 class="project-title">{{ item.title }}</h3>
         <span class="date-badge">{{ item.readDate }}</span>
       </div>
       <div class="meta-info">
@@ -111,6 +179,6 @@
         <mat-icon>format_quote</mat-icon>
         <p>{{ item.review }}</p>
       </div>
-    </mat-card-content>
-  </mat-card>
+    </div>
+  </div>
 </ng-template>
