@@ -1,1353 +1,994 @@
+/* Theme Variables */
+.theme-wrapper {
+  /* Common variables */
+  --text-light: #f8fafc;
+  --text-muted: #94a3b8;
+  --glass-border: rgba(255, 255, 255, 0.05);
+  --glass-bg: rgba(15, 23, 42, 0.3);
+
+  &.theme-day {
+    --bg-sky-1: #e0f2f1;
+    --bg-sky-2: #b2dfdb;
+    --hill-1: #20b2aa;
+    --hill-2: #019f9f;
+    --hill-3: #3fcdc6;
+    --hill-4: #1a9089;
+    --hill-5: #37aca6;
+    --cloud-bg: #fff;
+    --tree-green: #2E8B57;
+    --tree-yellow: #FFD700;
+    --tree-pink: #FFA7B5;
+    --house-roof: #a35a42;
+    --house-body: #4d79d7;
+    --text-primary: #045748;
+    --text-intro: #1a1a1a;
+    --text-highlight-start: #045748;
+    --text-highlight-end: #008080;
+    --accent-main: #004d4d;
+    --glass-bg: rgba(255, 255, 255, 0.5);
+    --glass-border: rgba(255, 255, 255, 0.5);
+    --glass-shadow: 0 20px 40px rgba(0, 80, 80, 0.15);
+    --btn-text: #fff;
+  }
+
+  &.theme-twilight {
+    --bg-sky-1: #ff9a9e;
+    --bg-sky-2: #fecfef;
+    --hill-1: #c94b4b;
+    --hill-2: #8a2387;
+    --hill-3: #e27c7c;
+    --hill-4: #4a1259;
+    --hill-5: #a63c63;
+    --cloud-bg: #ffe4e1;
+    --tree-green: #2c5364;
+    --tree-yellow: #f12711;
+    --tree-pink: #f5af19;
+    --house-roof: #3e1f47;
+    --house-body: #7d4370;
+    --text-primary: #4a1259;
+    --text-intro: #2c0b36;
+    --text-highlight-start: #8a2387;
+    --text-highlight-end: #e27c7c;
+    --accent-main: #8a2387;
+    --glass-bg: rgba(255, 255, 255, 0.4);
+    --glass-border: rgba(255, 255, 255, 0.3);
+    --glass-shadow: 0 25px 50px rgba(74, 18, 89, 0.25);
+    --btn-text: #fff;
+  }
+
+  &.theme-dark {
+    --bg-sky-1: #0f172a;
+    --bg-sky-2: #020617;
+    --hill-1: #0f3443;
+    --hill-2: #0a212c;
+    --hill-3: #1a4f66;
+    --hill-4: #051016;
+    --hill-5: #134053;
+    --cloud-bg: #1e293b;
+    --tree-green: #0a212c;
+    --tree-yellow: #00E5FF;
+    /* glowing trees */
+    --tree-pink: #008080;
+    --house-roof: #051016;
+    --house-body: #0a212c;
+    --text-primary: #00E5FF;
+    --text-intro: #f8fafc;
+    --text-highlight-start: #fff;
+    --text-highlight-end: #94a3b8;
+    --accent-main: #008080;
+    --glass-bg: rgba(15, 23, 42, 0.4);
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --glass-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8);
+    --btn-text: #fff;
+  }
+}
+
+/* Base Styles */
 .home-container {
   position: relative;
   width: 100%;
-  min-height: 100%;
-  background: #e0f2f1;
+  min-height: 100vh;
+  background: linear-gradient(180deg, var(--bg-sky-1), var(--bg-sky-2));
+  transition: background 1s ease;
   overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
+/* Background Elements (Landscape) */
 .background-elements {
   position: absolute;
   width: 100%;
   height: 100%;
-  
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 1;
+
   .cloud {
     position: absolute;
-    
+    background: var(--cloud-bg);
+    transition: background 1s ease;
+    will-change: transform;
+
     &::before,
     &::after {
       content: '';
       position: absolute;
-      background: #fff;
+      background: var(--cloud-bg);
       border-radius: 50%;
+      transition: background 1s ease;
     }
-    
+
     &.cloud-1 {
-      width: 100px;
-      height: 40px;
-      background: #fff;
+      width: 10vw;
+      height: 4vh;
       border-radius: 20px;
       top: 10%;
       right: 75%;
-      // SLOWER: Was 15s, now 45s
       animation: floatCloud 25s linear infinite;
-      
-      &::before {
-        width: 50px;
-        height: 50px;
-        bottom: 10px;
-        left: 15px;
-      }
-      
-      &::after {
-        width: 40px;
-        height: 40px;
-        bottom: 10px;
-        right: 15px;
-      }
     }
-    
+
+    &.cloud-1::before {
+      width: 5vw;
+      height: 5vw;
+      bottom: 1vh;
+      left: 1.5vw;
+    }
+
+    &.cloud-1::after {
+      width: 4vw;
+      height: 4vw;
+      bottom: 1vh;
+      right: 1.5vw;
+    }
+
     &.cloud-2 {
-      width: 80px;
-      height: 30px;
-      background: #fff;
+      width: 8vw;
+      height: 3vh;
       border-radius: 15px;
       top: 15%;
       left: 60%;
-      // SLOWER: Was 20s, now 60s
       animation: floatCloud 40s linear infinite reverse;
-      
-      &::before {
-        width: 40px;
-        height: 40px;
-        bottom: 8px;
-        left: 10px;
-      }
-      
-      &::after {
-        width: 30px;
-        height: 30px;
-        bottom: 8px;
-        right: 10px;
-      }
+    }
+
+    &.cloud-2::before {
+      width: 4vw;
+      height: 4vw;
+      bottom: 0.8vh;
+      left: 1vw;
+    }
+
+    &.cloud-2::after {
+      width: 3vw;
+      height: 3vw;
+      bottom: 0.8vh;
+      right: 1vw;
     }
 
     &.cloud-3 {
-      width: 100px;
-      height: 40px;
-      background: #fff;
+      width: 10vw;
+      height: 4vh;
       border-radius: 20px;
       top: 50%;
       right: 85%;
-      // SLOWER: Was 10s, now 35s
       animation: floatCloud 15s linear infinite;
-      
-      &::before {
-        width: 50px;
-        height: 50px;
-        bottom: 10px;
-        left: 15px;
-      }
-      
-      &::after {
-        width: 40px;
-        height: 40px;
-        bottom: 10px;
-        right: 15px;
-      }
     }
+
+    &.cloud-3::before {
+      width: 5vw;
+      height: 5vw;
+      bottom: 1vh;
+      left: 1.5vw;
+    }
+
+    &.cloud-3::after {
+      width: 4vw;
+      height: 4vw;
+      bottom: 1vh;
+      right: 1.5vw;
+    }
+
     &.cloud-4 {
-      width: 80px;
-      height: 30px;
-      background: #fff;
+      width: 8vw;
+      height: 3vh;
       border-radius: 15px;
       top: 55%;
       right: 60%;
-      // SLOWER: Was 13s, now 52s
-      animation: floatCloud 42s linear infinite reverse;  
-
-      &::before {
-        width: 40px;
-        height: 40px;
-        bottom: 8px;
-        left: 10px;
-      }
-      
-      &::after {
-        width: 30px;
-        height: 30px;
-        bottom: 8px;
-        right: 10px;
-      }
+      animation: floatCloud 42s linear infinite reverse;
     }
 
-    // --- NEW CLOUDS START HERE ---
+    &.cloud-4::before {
+      width: 4vw;
+      height: 4vw;
+      bottom: 0.8vh;
+      left: 1vw;
+    }
+
+    &.cloud-4::after {
+      width: 3vw;
+      height: 3vw;
+      bottom: 0.8vh;
+      right: 1vw;
+    }
+
     &.cloud-5 {
-      width: 120px;
-      height: 45px;
-      background: #fff;
+      width: 12vw;
+      height: 4.5vh;
       border-radius: 25px;
       top: 20%;
       left: 80%;
       animation: floatCloud 30s linear infinite reverse;
-      
-      &::before {
-        width: 60px;
-        height: 60px;
-        bottom: 12px;
-        left: 18px;
-      }
-      
-      &::after {
-        width: 45px;
-        height: 45px;
-        bottom: 12px;
-        right: 18px;
-      }
+    }
+
+    &.cloud-5::before {
+      width: 6vw;
+      height: 6vw;
+      bottom: 1.2vh;
+      left: 1.8vw;
+    }
+
+    &.cloud-5::after {
+      width: 4.5vw;
+      height: 4.5vw;
+      bottom: 1.2vh;
+      right: 1.8vw;
     }
 
     &.cloud-6 {
-      width: 70px;
-      height: 25px;
-      background: #fff;
+      width: 7vw;
+      height: 2.5vh;
       border-radius: 15px;
       top: 30%;
       right: 90%;
       animation: floatCloud 28s linear infinite;
-      
-      &::before {
-        width: 35px;
-        height: 35px;
-        bottom: 6px;
-        left: 8px;
-      }
-      
-      &::after {
-        width: 25px;
-        height: 25px;
-        bottom: 6px;
-        right: 8px;
-      }
+    }
+
+    &.cloud-6::before {
+      width: 3.5vw;
+      height: 3.5vw;
+      bottom: 0.6vh;
+      left: 0.8vw;
+    }
+
+    &.cloud-6::after {
+      width: 2.5vw;
+      height: 2.5vw;
+      bottom: 0.6vh;
+      right: 0.8vw;
     }
 
     &.cloud-7 {
-      width: 90px;
-      height: 35px;
-      background: #fff;
+      width: 9vw;
+      height: 3.5vh;
       border-radius: 20px;
       top: 45%;
       left: 75%;
       animation: floatCloud 35s linear infinite;
+    }
 
-      &::before {
-        width: 45px;
-        height: 45px;
-        bottom: 10px;
-        left: 12px;
-      }
-      
-      &::after {
-        width: 35px;
-        height: 35px;
-        bottom: 10px;
-        right: 12px;
-      }
+    &.cloud-7::before {
+      width: 4.5vw;
+      height: 4.5vw;
+      bottom: 1vh;
+      left: 1.2vw;
+    }
+
+    &.cloud-7::after {
+      width: 3.5vw;
+      height: 3.5vw;
+      bottom: 1vh;
+      right: 1.2vw;
     }
 
     &.cloud-8 {
-      width: 110px;
-      height: 40px;
-      background: #fff;
+      width: 11vw;
+      height: 4vh;
       border-radius: 20px;
       top: 65%;
       right: 70%;
       animation: floatCloud 22s linear infinite reverse;
+    }
 
-      &::before {
-        width: 50px;
-        height: 50px;
-        bottom: 10px;
-        left: 15px;
-      }
-      
-      &::after {
-        width: 40px;
-        height: 40px;
-        bottom: 10px;
-        right: 15px;
-      }
+    &.cloud-8::before {
+      width: 5vw;
+      height: 5vw;
+      bottom: 1vh;
+      left: 1.5vw;
+    }
+
+    &.cloud-8::after {
+      width: 4vw;
+      height: 4vw;
+      bottom: 1vh;
+      right: 1.5vw;
     }
   }
 
   .landscape {
-    display: none;
-    
-    @media (min-width: 1024px) {
-      display: block;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 20vh;
+    z-index: 2;
+
+    .hill {
       position: absolute;
       bottom: 0;
-      width: 100%;
-      height: 50vh;      
+      transition: background 1s ease;
 
-      .hill {
+      &.hill-1 {
+        width: 60vw;
+        height: 7vh;
+        right: 20%;
+        z-index: 3;
+        background: var(--hill-1);
+        border-radius: 50% 50% 0 0;
+
+        .tree:nth-child(1) {
+          left: 15%;
+          bottom: 85%;
+        }
+
+        .tree:nth-child(2) {
+          left: 20%;
+          bottom: 90%;
+        }
+
+        .tree:nth-child(3) {
+          left: 25%;
+          bottom: 95%;
+        }
+
+        .tree:nth-child(4) {
+          left: 70%;
+          top: -15%;
+        }
+
+        .tree:nth-child(5) {
+          left: 75%;
+          top: -15%;
+        }
+
+        .tree:nth-child(6) {
+          left: 40%;
+          top: 5%;
+        }
+
+        .flag-pole {
+          left: 40%;
+          bottom: 90%;
+        }
+
+        .house {
+          left: 50%;
+          top: -5%;
+        }
+      }
+
+      &.hill-2 {
+        width: 40vw;
+        height: 15vh;
+        right: 13%;
+        z-index: 1;
+        background: var(--hill-2);
+        clip-path: ellipse(50% 100% at 60% 100%);
+
+        .tree:nth-child(1) {
+          left: 30%;
+          top: 20%;
+        }
+
+        .tree:nth-child(2) {
+          left: 75%;
+          top: 15%;
+        }
+
+        .tree:nth-child(3) {
+          left: 63%;
+          top: 5%;
+        }
+
+        .house {
+          left: 60%;
+          top: 10%;
+        }
+      }
+
+      &.hill-3 {
+        width: 60vw;
+        height: 9vh;
+        right: -20%;
+        z-index: 4;
+        background: var(--hill-3);
+        clip-path: ellipse(40% 100% at 50% 100%);
+
+        .tree:nth-child(1) {
+          left: 28%;
+          top: 30%;
+        }
+
+        .tree:nth-child(2) {
+          left: 60%;
+          top: 15%;
+        }
+
+        .tree:nth-child(3) {
+          left: 45%;
+          top: 5%;
+        }
+      }
+
+      &.hill-4 {
+        width: 40vw;
+        height: 35vh;
+        right: -12%;
+        z-index: 2;
+        background: var(--hill-4);
+        clip-path: polygon(10% 100%, 50% 0%, 90% 100%);
+
+        &::before {
+          content: '';
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          background: inherit;
+          opacity: 0.7;
+          clip-path: polygon(30% 100%, 50% 20%, 70% 100%);
+        }
+      }
+
+      &.hill-5 {
+        width: 25vw;
+        height: 10vh;
+        right: 72%;
+        z-index: 5;
+        background: var(--hill-5);
+        clip-path: ellipse(40% 100% at 50% 100%);
+
+        .tree:nth-child(1) {
+          left: 25%;
+          top: 25%;
+        }
+
+        .tree:nth-child(2) {
+          left: 40%;
+          top: 5%;
+        }
+
+        .tree:nth-child(3) {
+          left: 60%;
+          top: 25%;
+        }
+      }
+    }
+
+    .tree {
+      position: absolute;
+      width: clamp(15px, 2vw, 25px);
+      height: clamp(25px, 3vw, 35px);
+      transition: color 1s ease;
+
+      &::before {
+        content: '';
+        position: absolute;
+        bottom: -25%;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 70%;
+        height: 15%;
+        background: rgba(0, 0, 0, 0.258);
+        border-radius: 50%;
+        z-index: -1;
+      }
+
+      &::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 85%;
+        clip-path: polygon(0% 100%, 50% 0%, 100% 100%);
+        background: currentColor;
+      }
+
+      .trunk {
+        position: absolute;
+        top: 40%;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 10%;
+        height: 80%;
+        background: #8B4513;
+      }
+
+      &.tree-yellow {
+        color: var(--tree-yellow);
+      }
+
+      &.tree-pink {
+        color: var(--tree-pink);
+      }
+
+      &.tree-green {
+        color: var(--tree-green);
+      }
+    }
+
+    .house {
+      position: absolute;
+      width: clamp(20px, 2.5vw, 30px);
+      height: clamp(25px, 3vw, 35px);
+      transform: translateX(-50%);
+      transition: background 1s ease;
+
+      &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 40%;
+        background: var(--house-roof);
+        transition: background 1s ease;
+        clip-path: polygon(0% 100%, 50% 0%, 100% 100%);
+      }
+
+      &::after {
+        content: '';
         position: absolute;
         bottom: 0;
-        overflow: visible;
-        
-        &.hill-1 {
-          position: absolute;
-          width: clamp(350px, 50%, 600px);
-          height: clamp(100px, 20%, 250px);
-          background: #20b2aa;
-          right: 20%;
-          z-index: 3;
-          bottom: 0;
-          animation: slideUp 1s ease-out 0.3s backwards;
-          border-radius: 50% 50% 0 0;
-
-          .tree:nth-child(1) {
-            position: absolute;
-            left: 15%;
-            bottom: 85%; 
-            z-index: 1;
-          }
-
-          .tree:nth-child(2) {
-            position: absolute;
-            left: 20%;
-            bottom: 90%; 
-            z-index: 1;
-          }
-
-          .tree:nth-child(3) {
-            position: absolute;
-            left: 25%;
-            bottom: 95%; 
-            z-index: 1;
-
-          }
-
-          .tree:nth-child(4) {
-            position: absolute;
-            left: 70%;
-            top: -15%; // Using top instead of bottom
-            z-index: 1;
-          }
-
-          .tree:nth-child(5) {
-            position: absolute;
-            left: 85%;
-            top: -15%; // Using top instead of bottom
-            z-index: 1;
-          }
-
-          .tree:nth-child(6) {
-            position: absolute;
-            left: 40%;
-            top: 5%; // Using top instead of bottom
-            z-index: 1;
-          }
-
-
-          .flag-pole {
-            position: absolute;
-            left: 40%;
-            bottom: 90%; // Using top instead of bottom
-            transform: translateX(-50%);
-            z-index: 1;
-
-          }
-
-
-          .house {
-            position: absolute;
-            left: 50%;
-            top: -5%; // Using top instead of bottom
-            transform: translateX(-50%);
-            z-index: 1;
-          }
-        }
-      
-        &.hill-2 {
-          width: clamp(200px, 70%, 400px);
-          height: clamp(250px, 35%, 350px);
-          background: #019f9f;
-          right: 13%;
-          bottom: 0;
-          z-index: 1;
-          animation: slideUp 1s ease-out 0.2s backwards;
-          clip-path: ellipse(50% 100% at 60% 100%);
-
-          .tree:nth-child(1) {
-            position: absolute;
-            left: 28%;
-            top: 30%; 
-            z-index: 1;
-          }
-
-          .tree:nth-child(2) {
-            position: absolute;
-            left: 60%;
-            top: 15%; 
-            z-index: 1;
-          }
-
-          .house {
-            position: absolute;
-            left: 50%;
-            top: 20%; // Using top instead of bottom
-            transform: translateX(-50%);
-            z-index: 1;
-          }
-        }
-        
-        &.hill-3 {
-          width: clamp(200px, 40%, 600px);
-          height: clamp(150px, 25%, 400px);
-          background: #3fcdc6;
-          right: -10%;
-          bottom: 0;
-          z-index: 4;
-          animation: slideUp 1s ease-out 0.4s backwards;
-          clip-path: ellipse(40% 100% at 50% 100%);
-
-          .tree:nth-child(1) {
-            position: absolute;
-            left: 28%;
-            top: 30%; 
-            z-index: 1;
-          }
-
-          .tree:nth-child(2) {
-            position: absolute;
-            left: 60%;
-            top: 15%; 
-            z-index: 1;
-          }
-
-          .tree:nth-child(3) {
-            position: absolute;
-            left: 45%;
-            top: 5%; 
-            z-index: 1;
-          }
-        }
-
-        &.hill-4 {
-
-          width: clamp(550px, 45%, 700px);
-          height: clamp(450px, 30%, 600px);
-          background: #1a9089;
-          right: -15%;
-          bottom: 0;
-          z-index: 2;
-          animation: slideUp 1s ease-out 0.3s backwards;
-          clip-path: polygon(
-            20% 100%,    /* left bottom */
-            50% 0%,      /* top center */
-            80% 100%     /* right bottom */
-          );
-          
-          &::before {
-            content: '';
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background: inherit;
-            opacity: 0.7;
-            clip-path: polygon(
-              30% 100%,   /* left bottom */
-              50% 20%,    /* top center */
-              70% 100%    /* right bottom */
-            );
-          }
-        }
-
-        &.hill-5 {
-          width: clamp(200px, 40%, 300px);
-          height: clamp(110px, 25%, 200px);
-          background: #37aca6;
-          right: 60%;
-          bottom: 0;
-          z-index: 5;
-          animation: slideUp 1s ease-out 0.4s backwards;
-          clip-path: ellipse(40% 100% at 50% 100%);
-
-          .tree:nth-child(1) {
-            position: absolute;
-            left: 25%;
-            top: 35%; // Using top instead of bottom
-            z-index: 1;
-          }
-
-          .tree:nth-child(2) {
-            position: absolute;
-            left: 40%;
-            top: 15%; // Using top instead of bottom
-            z-index: 1;
-          }
-        }
+        left: 15%;
+        width: 70%;
+        height: 65%;
+        background: var(--house-body);
+        transition: background 1s ease;
+        clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
       }
 
-
-      .tree {
+      .window-left,
+      .window-right,
+      .window-bottom {
         position: absolute;
-        width: clamp(15px, 2vw, 25px);
-        height: clamp(25px, 3vw, 35px);
-        
-        // Tree shadow (circular)
-        &::before {
-          content: '';
-          position: absolute;
-          bottom: -25%;
-          left: 50%;
-          transform: translateX(-50%);
-          width: 70%;
-          height: 15%;
-          background: rgba(0, 0, 0, 0.258);
-          border-radius: 50%;
-
-          z-index: -1;
-        }
-
-        // Tree triangle
-        &::after {
-          content: '';
-          position: absolute;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 85%;
-          clip-path: polygon(0% 100%, 50% 0%, 100% 100%);
-          background: currentColor;
-        }
-
-        .trunk {
-          position: absolute;
-          top: 40%;
-          left: 50%;
-          transform: translateX(-50%);
-          width: 10%;
-          height: 80%;
-          background: #8B4513;
-
-        }
-
-        &.tree-yellow {
-          color: #FFD700;
-        }
-
-        &.tree-pink {
-          color: #FFA7B5;
-        }
-
-        &.tree-green {
-          color: #2E8B57;
-        }
-
-        animation: treeAppear 0.5s ease-out backwards;
+        width: 18%;
+        height: 18%;
+        background: #87CEEB;
+        z-index: 1;
       }
 
-      .house {
-        position: absolute;
-        width: clamp(20px, 2.5vw, 30px);
-        height: clamp(25px, 3vw, 35px);
-        
-        // Roof
-        &::before {
-          content: '';
-          position: absolute;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 40%;
-          background: #a35a42;
-          clip-path: polygon(0% 100%, 50% 0%, 100% 100%);
-        }
-
-        // House body
-        &::after {
-          content: '';
-          position: absolute;
-          bottom: 0;
-          left: 15%;
-          width: 70%;
-          height: 65%;
-          background: #4d79d7;
-          clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
-        }
-
-        // Top Windows
-        .window-left {
-          position: absolute;
-          bottom: 40%;
-          left: 28%;
-          width: 18%;
-          height: 18%;
-          background: #87CEEB;
-          z-index: 1;
-        }
-
-        .window-right {
-          position: absolute;
-          bottom: 40%;
-          right: 28%;
-          width: 18%;
-          height: 18%;
-          background: #87CEEB;
-          z-index: 1;
-
-        }
-
-        // Bottom Window
-        .window-bottom {
-          position: absolute;
-          bottom: 12%;
-          left: 28%;
-          width: 18%;
-          height: 18%;
-          background: #87CEEB;
-          z-index: 1;
-        }
-
-        // Door
-        .door {
-          position: absolute;
-          bottom: 0;
-          right: 25%;
-          width: 18%;
-          height: 30%;
-          background: #8e5d44; // Darker brown for door
-          z-index: 1;
-        }
+      .window-left {
+        bottom: 40%;
+        left: 28%;
       }
 
-      .flag-pole {
+      .window-right {
+        bottom: 40%;
+        right: 28%;
+      }
+
+      .window-bottom {
+        bottom: 12%;
+        left: 28%;
+      }
+
+      .door {
         position: absolute;
-        width: 2px;
-        height: clamp(40px, 6vw, 60px);
-        background: #666;
-        
-        .flag {
-          position: absolute;
-          width: clamp(15px, 2vw, 20px);
-          height: clamp(10px, 1.5vw, 15px);
-          top: 5px;
-          transform-origin: left;
-          animation: waveFlag 3s ease-in-out infinite;
-          
-          &.flag-mint {
-            background: #20b2aa;
-          }
-          
-          &.flag-coral {
-            background: #FF7F50;
-          }
+        bottom: 0;
+        right: 25%;
+        width: 18%;
+        height: 30%;
+        background: #8e5d44;
+        z-index: 1;
+      }
+    }
 
-          &.flag-blue {
-            background: #0159d4eb;
-          }
-        }
-        
+    .flag-pole {
+      position: absolute;
+      width: 2px;
+      height: clamp(40px, 6vw, 60px);
+      background: #666;
+      transform: translateX(-50%);
 
-        &.left {
-          left: 10%;
-          bottom: 40%;
-          z-index: 4;
-        }
-        
-        &.right {
-          right: 10%;
-          bottom: 40%;
-          z-index: 4;
+      .flag {
+        position: absolute;
+        width: clamp(15px, 2vw, 20px);
+        height: clamp(10px, 1.5vw, 15px);
+        top: 5px;
+        transform-origin: left;
+        will-change: transform;
+        animation: waveFlag 3s ease-in-out infinite;
+
+        //&.flag-coral { background: #FF7F50; }
+        &.flag-blue {
+          background: #0159d4;
         }
       }
     }
   }
 }
 
-.download-btn {
-  display: inline-flex;
-  align-items: center;
-  //padding: 0.8rem 1.5rem;
-  //background: linear-gradient(135deg, #045748, #034235);
-  color: #008080;
-  text-decoration: none;
-  transition: all 0.3s ease;
-  border: none;
-  cursor: pointer;
-  position: relative;
-  overflow: hidden;
+/* Animations */
+@keyframes floatCloud {
+  from {
+    transform: translate3d(-10vw, 0, 0);
+  }
 
-  &:active {
-    transform: translateY(1px);
-    box-shadow: 0 2px 6px rgba(4, 87, 72, 0.2);
+  to {
+    transform: translate3d(110vw, 0, 0);
   }
 }
 
+@keyframes waveFlag {
+
+  0%,
+  100% {
+    transform: rotate(0deg) skewX(0deg);
+  }
+
+  25% {
+    transform: rotate(-10deg) skewX(-12deg);
+  }
+
+  50% {
+    transform: rotate(0deg) skewX(0deg);
+  }
+
+  75% {
+    transform: rotate(10deg) skewX(12deg);
+  }
+}
+
+@keyframes gradientFlow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes pulseIndicator {
+  0% { transform: scale(0.95); opacity: 1; }
+  50% { transform: scale(1.2); opacity: 0.6; box-shadow: 0 0 15px var(--text-highlight-start); }
+  100% { transform: scale(0.95); opacity: 1; }
+}
+
+/* Content Area inside Glass Panel */
 .content-area {
   width: 100%;
-  max-width: 1200px; // Adjusted max-width
-  margin: 0 auto;
-  padding: 4rem 2rem;
+  max-width: 1200px;
+  padding: 2rem;
   position: relative;
-  z-index: 10; // Ensure content is above background
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+}
+
+.glass-panel {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap:1rem;
+  gap: 3rem;
+  width: 100%;
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+  border-radius: 24px;
+  padding: 3rem;
+  box-shadow: var(--glass-shadow);
+  transition: all 0.5s ease;
+  animation: floatPanel 8s ease-in-out infinite;
+
+  &:hover {
+    box-shadow: 0 35px 60px color-mix(in srgb, var(--glass-shadow) 50%, rgba(0, 0, 0, 0.1));
+    border-color: rgba(255, 255, 255, 0.4);
+  }
+
+  @media (max-width: 968px) {
+    flex-direction: column-reverse;
+    text-align: center;
+    padding: 2rem;
+    gap: 2rem;
+  }
 }
 
 .text-content {
-  max-width: 650px;
   flex: 1;
+  max-width: 650px;
 
   .hello {
-    font-size: 1.1rem;
-    font-weight: 500;
-    color: #045748;
-    margin-bottom: 1rem;
-  }
-  
-  .intro {
-    font-size: 3.5rem;
-    font-weight: 300;
-    color: #1a1a1a;
-    margin: 0;
-    line-height: 1.2;
-    
-    strong {
-      font-weight: 700; // Makes the name bold
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    margin-bottom: 1.5rem;
+    color: var(--text-primary);
+
+    &::before {
+      content: '';
+      width: 50px;
+      height: 2px;
+      background: linear-gradient(90deg, var(--text-highlight-start), var(--text-highlight-end));
+      border-radius: 2px;
+      opacity: 0.8;
+    }
+
+    &::after {
+      content: '';
+      width: 50px;
+      height: 2px;
+      background: linear-gradient(90deg, var(--text-highlight-start), var(--text-highlight-end));
+      border-radius: 2px;
+      opacity: 0.8;
     }
   }
 
-  .role {
-    font-size: 1.5rem;
-    color: #008080;
-    margin-top: 0.5rem;
-    margin-bottom: 2rem;
-    border-bottom: 2px solid rgba(0,128,128,0.3);
-    display: inline-block;
-    padding-bottom: 0.5rem;
+  .hero-title-section {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .title-greeting {
+    font-size: 4rem;
+    font-weight: 300;
+    color: var(--text-intro);
+    margin: 0;
+    line-height: 1.1;
+    letter-spacing: -1px;
+    transition: color 1s ease;
+
+    .title-name {
+      font-weight: 500;
+      background: linear-gradient(135deg, var(--text-highlight-start), var(--text-highlight-end), var(--text-highlight-start));
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: gradientFlow 5s ease infinite;
+      display: inline-block;
+    }
+
+    @media (max-width: 968px) { font-size: 3rem; }
+    @media (max-width: 480px) { font-size: 2.5rem; }
+  }
+
+  .role-showcase {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .primary-role {
+    display: inline-flex;
+    align-items: center;
+    
+    .role-text {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      // text-transform: uppercase;
+      letter-spacing: 3px;
+      padding-bottom: 2px;
+      transition: color 1s ease;
+    }
+  }
+
+  .spec-text {
+    margin: 0;
+    font-size: 0.9rem;
+    line-height: 1.8;
+    color: var(--text-intro);
+    opacity: 0.95;
+    font-weight: 400;
+    margin-bottom: 1rem;
+    transition: color 1s ease;
+
+    @media (max-width: 480px) {
+      font-size: 0.9rem;
+    }
   }
 
   .bio {
-    max-width: 600px;
-    margin-bottom: 2.5rem;
-    line-height: 1.7;
-    color: #045748;
-    font-size: 1.1rem;
+    font-size: 0.9rem;
+    line-height: 1.8;
+    color: var(--text-intro);
+    opacity: 0.95;
+    font-weight: 400;
+    margin-bottom: 3rem;
+    transition: color 1s ease;
+    text-align: justify;
+
+    @media (max-width: 480px) {
+      font-size: 0.9rem;
+    }
   }
 }
 
 .cta-buttons {
   display: flex;
   gap: 1.5rem;
-  
+
+  @media (max-width: 968px) {
+    justify-content: center;
+  }
+
+  @media (max-width: 480px) {
+    flex-direction: column;
+    width: 100%;
+
+    button {
+      width: 100%;
+    }
+  }
+
   button {
-    padding: 0.9rem 2rem;
-    border-radius: 8px;
+    padding: 0;
+    border-radius: 40px;
     font-size: 0.9rem;
-    font-weight: 600;
+    font-weight: 500;
     cursor: pointer;
-    transition: all 0.3s ease;
-    letter-spacing: 0.5px;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border: none;
+    outline: none;
+    position: relative;
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
 
     .btn-content {
       display: flex;
       align-items: center;
+      justify-content: center;
       gap: 0.75rem;
-    }
-    
-    i {
-      font-size: 1.1rem;
+      padding: 1.2rem 2rem;
+      border-radius: 50px;
     }
   }
-  
+
   .contact-btn {
-    background: #004d4d; // Dark teal solid background
-    color: #ffffff;
-    border: 2px solid #004d4d;
-    
+    background: var(--accent-main);
+    color: var(--btn-text);
+    transition: all 0.4s ease;
+    animation: pulseGlow 2.5s infinite;
+
     &:hover {
-      background: #003333; // Darken on hover
-      border-color: #003333;
-      transform: translateY(-2px);
-      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      transform: translateY(-5px) scale(1.02);
+      box-shadow: 0 15px 25px color-mix(in srgb, var(--accent-main) 40%, transparent);
+      filter: brightness(1.1);
+      animation: none;
     }
   }
-  
+
   .cv-btn {
     background: transparent;
-    color: #004d4d;
-    border: 2px solid #004d4d;
-    
-    // The anchor tag inside needs styling
+    border: 1px solid var(--accent-main);
+    transition: border-color 1s ease;
+
     .download-btn {
-      color: #004d4d;
+      color: var(--text-intro);
       text-decoration: none;
+      display: block;
+      width: 100%;
+      height: 100%;
+      transition: color 1s ease;
     }
 
     &:hover {
-      background: rgba(0, 77, 77, 0.05);
-      transform: translateY(-2px);
-      box-shadow: 0 5px 15px rgba(0, 77, 77, 0.1);
+      background: color-mix(in srgb, var(--accent-main) 10%, transparent);
+      transform: translateY(-5px) scale(1.02);
+      box-shadow: 0 15px 25px rgba(0, 0, 0, 0.05);
     }
   }
 }
 
 .image-content {
   flex-shrink: 0;
-  max-width: 300px;
-  padding-right: 10%;
-  
-  img {
-    width: 100%;
+  display: flex;
+  justify-content: center;
+
+  .avatar-wrapper {
+    position: relative;
+    width: 280px;
+    height: 280px;
     border-radius: 50%;
-    border: 8px solid #ffffff;
-    box-shadow: 0 10px 40px rgba(4, 87, 72, 0.2);
-  }
-}
+    padding: 8px;
+    background: linear-gradient(135deg, var(--text-highlight-start), transparent, var(--text-highlight-end));
+    animation: rotateGradient 10s linear infinite;
+    transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.5s ease;
+    cursor: pointer;
 
-.decorative-elements {
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 50%;
-  height: 100%;
-  pointer-events: none;
-  
-  .coffee-area {
-    position: absolute;
-    top: 20%;
-    right: 10%;
-    
-    .coffee-coaster {
-      width: 120px;
-      height: 80px;
-      background-color: #dd9988;
-      border-radius: 60px;
+    &:hover {
+      transform: scale(1.08) translateY(-10px);
+      box-shadow: 0 30px 60px color-mix(in srgb, var(--text-highlight-start) 40%, transparent);
     }
-    
-    .coffee-cup {
-      width: 80px;
-      height: 80px;
-      background-color: white;
-      border-radius: 50%;
-      position: relative;
-      top: -60px;
-      left: 20px;
-    }
-  }
-  
-  .plant-container {
-    position: absolute;
-    top: 10%;
-    right: 5%;
-    
-    .plant {
-      width: 100px;
-      height: 120px;
-      background-color: #4a8;
-      clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
-    }
-  }
-  
-  .keyboard {
-    position: absolute;
-    bottom: 10%;
-    right: 5%;
-    width: 400px;
-    height: 150px;
-    background-color: #eee;
-    border-radius: 8px;
-  }
-  
-  .accessories {
-    position: absolute;
-    top: 40%;
-    right: 30%;
-    
-    .ruler {
-      width: 200px;
-      height: 30px;
-      background-color: #ddd;
-      transform: rotate(-45deg);
-    }
-    
-    .glasses {
-      width: 60px;
-      height: 20px;
-      border: 2px solid #333;
-      position: absolute;
-      top: 40px;
-      right: 20px;
-    }
-    
-    .clips {
-      position: absolute;
-      top: 80px;
-      right: 40px;
-      
-      &::before, &::after {
-        content: '';
-        width: 20px;
-        height: 20px;
-        border: 2px solid #666;
-        position: absolute;
-        border-radius: 50%;
-      }
-      
-      &::after {
-        left: 30px;
-      }
-    }
-  }
-}
 
-.hill-illustration {
-  position: fixed;
-  bottom: 0;
-  right: 0;
-  width: 400px;
-  height: 300px;
-  pointer-events: none;
-  z-index: 1;
-  animation: slideUpFade 1s ease-out;
-  
-  .hill {
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    width: 100%;
-    height: 60%;
-    background: #20B2AA;
-    border-radius: 100% 0 0 0;
-    transform-origin: bottom right;
-    animation: scaleIn 1.2s ease-out;
-    
-    &::before {
-      content: '';
-      position: absolute;
-      bottom: 40%;
-      right: 20%;
-      width: 80%;
+    img {
+      width: 100%;
       height: 100%;
-      background: #008080;
-      border-radius: 100% 0 0 0;
-      animation: slideUp 1.4s ease-out;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 4px solid var(--glass-bg);
+      background: var(--bg-sky-2);
+      animation: counterRotateGradient 10s linear infinite;
+      transition: border-color 1s ease, background 1s ease;
     }
-  }
-  
-  .trees {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    
-    .tree {
-      position: absolute;
-      width: 20px;
-      height: 30px;
-      
-      &::before {
-        content: '';
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
-        background: #4CAF50;
-        animation: treeGrow 0.6s ease-out backwards;
-      }
-      
-      &:nth-child(1) { bottom: 40%; right: 30%; animation-delay: 0.8s; }
-      &:nth-child(2) { bottom: 50%; right: 45%; animation-delay: 1s; }
-      &:nth-child(3) { bottom: 35%; right: 60%; animation-delay: 1.2s; }
-      &:nth-child(4) { bottom: 45%; right: 75%; animation-delay: 1.4s; }
-    }
-  }
-  
-  .houses {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    
-    .house {
-      position: absolute;
-      width: 30px;
-      height: 30px;
-      
-      &::before {
-        content: '';
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        background: #FFF;
-        clip-path: polygon(0% 30%, 50% 0%, 100% 30%, 100% 100%, 0% 100%);
-        animation: houseRise 0.8s ease-out backwards;
-      }
-      
-      &:nth-child(1) { bottom: 45%; right: 40%; animation-delay: 1.6s; }
-      &:nth-child(2) { bottom: 55%; right: 65%; animation-delay: 1.8s; }
-    }
-  }
-  
-  .flags {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    
-    .flag {
-      position: absolute;
-      width: 20px;
-      height: 30px;
-      
-      &::before {
-        content: '';
-        position: absolute;
-        width: 2px;
-        height: 100%;
-        background: #666;
-      }
-      
-      &::after {
-        content: '';
-        position: absolute;
-        width: 15px;
-        height: 10px;
-        top: 5px;
-        left: 2px;
-        background: #FF9999;
-        clip-path: polygon(0 0, 100% 0, 80% 100%, 0 100%);
-        animation: flagWave 3s ease-in-out infinite;
-      }
-      
-      &:nth-child(1) { bottom: 60%; left: 10%; }
-      &:nth-child(2) { bottom: 70%; right: 10%; }
+
+    @media (max-width: 968px) {
+      width: 220px;
+      height: 220px;
+      margin-bottom: 1rem;
     }
   }
 }
 
-// Add keyframe animations
-@keyframes float {
-  0%, 100% { 
-    transform: translate(0, 0) rotate(0deg); 
-  }
-  25% { 
-    transform: translate(10px, -15px) rotate(2deg); 
-  }
-  50% { 
-    transform: translate(-5px, -25px) rotate(-1deg); 
-  }
-  75% { 
-    transform: translate(-15px, -10px) rotate(1deg); 
-  }
-}
-
-@keyframes steam {
-  0%, 100% { 
-    transform: translateY(0) scale(1);
-    opacity: 0;
-  }
-  50% { 
-    transform: translateY(-20px) scale(1.2);
-    opacity: 0.5;
-  }
-}
-
-@keyframes gridMove {
+@keyframes rotateGradient {
   0% {
-    transform: translateY(0);
-  }
-  100% {
-    transform: translateY(30px);
-  }
-}
-
-@keyframes pathDraw {
-  0% {
-    stroke-dasharray: 1000;
-    stroke-dashoffset: 1000;
-    opacity: 0.3;
-  }
-  50% {
-    opacity: 0.6;
-  }
-  100% {
-    stroke-dasharray: 1000;
-    stroke-dashoffset: 0;
-    opacity: 0.3;
-  }
-}
-
-@keyframes slideUpFade {
-  from {
-    transform: translateY(50px);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-
-@keyframes scaleIn {
-  from {
-    transform: scale(0);
-  }
-  to {
-    transform: scale(1);
-  }
-}
-
-@keyframes slideUp {
-  from {
-    transform: translateY(100%);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-
-@keyframes treeGrow {
-  from {
-    transform: scale(0, 0);
-    opacity: 0;
-  }
-  to {
-    transform: scale(1, 1);
-    opacity: 1;
-  }
-}
-
-@keyframes houseRise {
-  from {
-    transform: translateY(20px);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-
-@keyframes flagWave {
-  0%, 100% {
     transform: rotate(0deg);
   }
-  50% {
-    transform: rotate(-10deg);
-  }
-}
 
-@keyframes growTree {
-  from {
-    transform: scaleY(0);
-    opacity: 0;
-  }
-  to {
-    transform: scaleY(1);
-    opacity: 1;
-  }
-}
-
-@keyframes waveFlag {
-  0% {
-    transform: rotate(0deg) skewX(0deg);
-  }
-  25% {
-    transform: rotate(-10deg) skewX(-12deg);
-  }
-  50% {
-    transform: rotate(0deg) skewX(0deg);
-  }
-  75% {
-    transform: rotate(10deg) skewX(12deg);
-  }
   100% {
-    transform: rotate(0deg) skewX(0deg);
+    transform: rotate(360deg);
   }
 }
 
-@keyframes floatCloud {
-  from {
-    transform: translateX(-100%);
+@keyframes counterRotateGradient {
+  0% {
+    transform: rotate(0deg);
   }
-  to {
-    transform: translateX(1000%);
+
+  100% {
+    transform: rotate(-360deg);
   }
 }
 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
+@keyframes pulseDot {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 color-mix(in srgb, var(--text-highlight-start) 70%, transparent);
   }
-  to {
-    opacity: 1;
+
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 8px transparent;
+  }
+
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 transparent;
+  }
+}
+
+@keyframes floatPanel {
+
+  0%,
+  100% {
     transform: translateY(0);
   }
-}
 
-@keyframes treeAppear {
-  from {
-    transform: scaleY(0);
-    opacity: 0;
-  }
-  to {
-    transform: scaleY(1);
-    opacity: 1;
+  50% {
+    transform: translateY(-10px);
   }
 }
 
-// Add responsive styles
-@media (max-width: 768px) {
-  .content-area {
-    flex-direction: column;
-    padding: 1rem;
+@keyframes pulseGlow {
+  0% {
+    box-shadow: 0 0 0 0 color-mix(in srgb, var(--accent-main) 50%, transparent);
   }
-  
-  .text-content {
-    max-width: 100%;
-    
-    .intro {
-      font-size: 2.5rem;
-    }
-    
-    .role {
-      font-size: 1.5rem;
-    }
+
+  70% {
+    box-shadow: 0 0 0 15px transparent;
   }
-  
-  .decorative-elements {
-    display: none;
-  }
-  
-  .cta-buttons {
-    flex-direction: column;
-    
-    button {
-      width: 100%;
-    }
+
+  100% {
+    box-shadow: 0 0 0 0 transparent;
   }
 }
 
-// Position elements on hills
-.hill-1 {
-  .tree:nth-child(1) {
-    left: 30%;
-    bottom: 75%;  // Higher up on the hill
-    z-index: 4;
-  }
-  
-  .tree:nth-child(2) {
-    left: 45%;
-    bottom: 85%;  // Highest position
-    z-index: 4;
-  }
-  
-  .tree:nth-child(3) {
-    left: 60%;
-    bottom: 75%;  // Higher up on the hill
-    z-index: 4;
-  }
-  
-  .house {
-    left: 50%;
-    bottom: 65%;  // Position house below trees
-    transform: translateX(-50%); // Center the house
-    z-index: 4;
-  }
-}
-
-.hill-2 {
-  .tree:nth-child(1) { left: 35%; bottom: 50%; }
-  .house { left: 55%; bottom: 45%; }
-  .tree:nth-child(2) { left: 75%; bottom: 50%; }
-}
-
-.hill-3 {
-  .tree:nth-child(1) { right: 25%; bottom: 55%; }
-  .tree:nth-child(2) { right: 45%; bottom: 65%; }
-  .tree:nth-child(3) { right: 65%; bottom: 55%; }
-}
-
-// Add positions for elements on the new hill
-.hill-4 {
-  .tree:nth-child(1) { left: 35%; bottom: 45%; }
-  .tree:nth-child(2) { left: 50%; bottom: 35%; }
-  .tree:nth-child(3) { left: 65%; bottom: 45%; }
-  .house { left: 50%; bottom: 40%; }
-}
-
-// Media queries for responsiveness
-@media (max-width: 768px) {
-  .landscape {
-    height: 45vh;
-    
-    .hill {
-      &.hill-1 { right: 15%; }
-      &.hill-2 { right: 30%; }
-      &.hill-3 { right: 0%; }
-      &.hill-4 { right: -10%; }
-    }
-  }
-}
-
-@media (max-width: 480px) {
-  .landscape {
-    height: 40vh;
-    
-    .hill {
-      &.hill-1 { right: 10%; }
-      &.hill-2 { right: 25%; }
-      &.hill-3 { right: -5%; }
-      &.hill-4 { right: -15%; }
-    }
-    
-    .flag-pole {
-      &.left { left: 5%; }
-      &.right { right: 5%; }
-    }
-  }
-}
-
-// Add styles for ultra-wide screens
-@media (min-width: 1920px) {
-  .landscape {
-    height: 80vh;
-    
-    .hill {
-      &.hill-1 {
-        right: -15%;
-      }
-      &.hill-2 {
-        right: 15%;
-      }
-      &.hill-3 {
-        right: -5%;
-      }
-    }
-  }
-}
-
-// Add styles for different aspect ratios
-@media (aspect-ratio: 21/9) {
-  .landscape {
-    height: 60vh;
-  }
-}
-
-@media (aspect-ratio: 16/9) {
-  .landscape {
-    height: 50vh;
-  }
-}
-
-@media (aspect-ratio: 4/3) {
-  .landscape {
-    height: 45vh;
-  }
-}
-
-// Handle landscape orientation on mobile
-@media (max-height: 500px) and (orientation: landscape) {
-  .landscape {
-    height: 90vh;
-    
-    .hill {
-      &.hill-1 { height: 150%; }
-      &.hill-2 { height: 130%; }
-      &.hill-3 { height: 100%; }
-    }
-  }
-}
-@media (max-width: 1024px) {
-  .content-area {
-    flex-direction: column-reverse; // Puts image on top on mobile
-    text-align: center;
-  }
-
-  .text-content {
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-
-    .intro {
-      font-size: 2.8rem;
-    }
-    .role {
-      font-size: 1.3rem;
-    }
-  }
-  
-  .image-content {
-    max-width: 300px;
-    margin-bottom: 2rem;
-  }
-  
-  .cta-buttons {
-    justify-content: center;
-  }
-}
-
-@media (max-width: 480px) {
-  .text-content {
-    .intro {
-      font-size: 2.2rem;
-    }
-    .role {
-      font-size: 1.1rem;
-    }
-    .bio {
-      font-size: 1rem;
-    }
-  }
-
-  .cta-buttons {
-    flex-direction: column;
-    width: 100%;
-    max-width: 300px;
-  }
+// Reset background for sections
+::ng-deep section {
+  position: relative;
+  z-index: 10;
 }

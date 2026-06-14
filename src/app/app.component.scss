@@ -1,5 +1,6 @@
 .app-container {
   display: flex;
+  flex-direction: column;
   min-height: 100vh;
   background-color: #f8f9fa;
   overflow: hidden;
@@ -7,8 +8,7 @@
 
 .main-content {
   flex: 1;
-  margin-left: 280px;
-  padding: 2% 2%;
+  padding: 0;
   //min-height: 100vh;
   background-color: #ffffff;
   overflow: hidden;
@@ -16,9 +16,12 @@
 
 @media (max-width: 768px) {
   .main-content {
-    margin-left: 0;
-    //padding: 1rem;
+    //padding: 0;
     min-height: 100vh;
     overflow: hidden;
   }
+}
+
+section {
+  scroll-margin-top: 70px; /* Adjust for sticky navbar */
 }

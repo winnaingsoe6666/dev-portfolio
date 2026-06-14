@@ -3,17 +3,14 @@ import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 import { trigger, transition, style, animate, query, stagger } from '@angular/animations';
 
-// Interface for a university degree
 interface EducationItem {
   degree: string;
   institution: string;
   location: string;
   date: string;
-  logo: string;
   highlights: string[];
 }
 
-// Interface for a certification
 interface CertificationItem {
   title: string;
   issuer: string;
@@ -22,6 +19,11 @@ interface CertificationItem {
   credentialId?: string;
   credentialUrl?: string;
   issuerUrl?: string;
+}
+
+interface LearningFocus {
+  icon: string;
+  label: string;
 }
 
 @Component({
@@ -39,7 +41,6 @@ interface CertificationItem {
     ]),
     trigger('listAnimation', [
       transition(':enter', [
-        // The animation now only targets the certificate cards
         query('.certificate-card', [
           style({ opacity: 0, transform: 'translateY(20px)' }),
           stagger(150, [
@@ -52,18 +53,23 @@ interface CertificationItem {
 })
 export class EducationComponent {
 
-  // This is now a single object, not an array
   universityEducation: EducationItem = {
     degree: 'Bachelor of Engineering (Electronics)',
-    institution: 'Technological University, Kalay, Myanmar',
+    institution: 'Technological University, Kalay',
     location: 'Kalay, Myanmar',
     date: '2012 - 2018',
-    logo: 'assets/images/education/tukalay.jpg', // <-- Make sure this path is correct
     highlights: [
-      'Served as the student union leader for the Electronics major.',
-      'Received the Project Award for the "Smart Home Automation System" in 2018.'
+      'Project Award (Smart Home Automation)',
+      'Student Union Leader'
     ]
   };
+
+  learningFocusList: LearningFocus[] = [
+    { icon: '☁', label: 'Cloud Architecture' },
+    { icon: '🤖', label: 'AI-Assisted Development' },
+    { icon: '🏦', label: 'Financial Technology' },
+    { icon: '🏗', label: 'System Design' }
+  ];
 
   certifications: CertificationItem[] = [
     {

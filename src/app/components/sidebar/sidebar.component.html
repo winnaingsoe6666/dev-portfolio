@@ -1,81 +1,49 @@
-<div class="sidebar-wrapper">
+<nav class="navbar" [ngClass]="currentTheme" [class.menu-open]="isSidebarOpen">
+  <div class="nav-brand" (click)="scrollTo('home')">
+    <div class="profile-image">
+      <img [src]="profileImage" alt="Win Naing Soe" (error)="handleImageError($event)" #profileImg>
+    </div>
+    <div style="display: flex; flex-direction: column; justify-content: center;">
+      <span class="brand-name" style="line-height: 1.2;">Win Naing Soe</span>
+      <span class="greeting-text" style="font-size: 0.75rem; font-weight: 500; opacity: 0.8;">{{ getGreeting() }}</span>
+    </div>
+  </div>
+
   <button class="menu-toggle" (click)="toggleSidebar()">
     <mat-icon>{{ isSidebarOpen ? 'close' : 'menu' }}</mat-icon>
   </button>
 
-  <div class="sidebar-overlay" *ngIf="isSidebarOpen" (click)="toggleSidebar()"></div>
+  <div class="nav-content" [class.show]="isSidebarOpen">
+    <ul class="nav-links">
+      <li>
+        <a [class.active]="activeSection === 'home'" (click)="scrollTo('home')">Home</a>
+      </li>
+      <li>
+        <a [class.active]="activeSection === 'about'" (click)="scrollTo('about')">About</a>
+      </li>
+      <li>
+        <a [class.active]="activeSection === 'resume'" (click)="scrollTo('resume')">Career</a>
+      </li>
+      <li>
+        <a [class.active]="activeSection === 'education'" (click)="scrollTo('education')">Education</a>
+      </li>
+      <li>
+        <a [class.active]="activeSection === 'portfolio'" (click)="scrollTo('portfolio')">Portfolio</a>
+      </li>
+      <li>
+        <a [class.active]="activeSection === 'contact'" (click)="scrollTo('contact')">Contact</a>
+      </li>
+    </ul>
 
-  <div class="sidebar" [@sidebarAnimation] [class.open]="isSidebarOpen">
-    <div class="profile-section">
-      <div class="profile-image">
-        <img [src]="profileImage" alt="Win Naing Soe" (error)="handleImageError($event)" #profileImg>
-        <div class="profile-border"></div>
-      </div>
-      <h2 class="name">Win Naing Soe</h2>
-      <p class="title">Software Engineer</p>
+    <div class="theme-switcher">
+      <button (click)="setTheme('theme-day')" [class.active]="currentTheme === 'theme-day'" title="Day Mode">☀️</button>
+      <button (click)="setTheme('theme-twilight')" [class.active]="currentTheme === 'theme-twilight'" title="Twilight Mode">🌅</button>
+      <button (click)="setTheme('theme-dark')" [class.active]="currentTheme === 'theme-dark'" title="Dark Mode">🌙</button>
     </div>
-
-    <nav class="navigation">
-      <a routerLink="/home" routerLinkActive="active" class="nav-item" (click)="toggleSidebar()">
-        <div class="icon-wrapper">
-          <mat-icon>home</mat-icon>
-        </div>
-        <span>Home</span>
-        <div class="active-indicator"></div>
-      </a>
-      <a routerLink="/resume" routerLinkActive="active" class="nav-item" (click)="toggleSidebar()">
-        <div class="icon-wrapper">
-          <mat-icon>description</mat-icon>
-        </div>
-        <span>Career Timeline</span>
-        <div class="active-indicator"></div>
-      </a>
-      <a routerLink="/education" routerLinkActive="active" class="nav-item" (click)="toggleSidebar()">
-        <div class="icon-wrapper">
-          <mat-icon>school</mat-icon>
-        </div>
-        <span>Education</span>
-        <div class="active-indicator"></div>
-      </a>
-      <a routerLink="/portfolio" routerLinkActive="active" class="nav-item" (click)="toggleSidebar()">
-        <div class="icon-wrapper">
-          <mat-icon>work</mat-icon>
-        </div>
-        <span>Portfolio</span>
-        <div class="active-indicator"></div>
-      </a>
-      <a routerLink="/about" routerLinkActive="active" class="nav-item" (click)="toggleSidebar()">
-        <div class="icon-wrapper">
-          <mat-icon>person</mat-icon>
-        </div>
-        <span>About Me</span>
-        <div class="active-indicator"></div>
-      </a>
-      <a routerLink="/contact" routerLinkActive="active" class="nav-item" (click)="toggleSidebar()">
-        <div class="icon-wrapper">
-          <mat-icon>mail</mat-icon>
-        </div>
-        <span>Contact</span>
-        <div class="active-indicator"></div>
-      </a>
-    </nav>
 
     <div class="social-links">
-      <a href="https://github.com/winnaingsoe6666" target="_blank" class="social-item">
-        <mat-icon svgIcon="github"></mat-icon>
-      </a>
-      <a href="https://www.linkedin.com/in/win-naing-soe" target="_blank" class="social-item">
-        <mat-icon svgIcon="linkedin"></mat-icon>
-      </a>
-      <a href="https://line.me/ti/p/tGMYc6ra0E" target="_blank" class="social-item">
-        <mat-icon svgIcon="line"></mat-icon>
-      </a>
-      <a href="https://www.facebook.com/profile.php?id=100079095523088" target="_blank" class="social-item">
-        <mat-icon svgIcon="facebook"></mat-icon>
-      </a>
-      <a href="mailto:winnaingsoe6666@gmail.com" class="social-item">
-        <mat-icon svgIcon="gmail"></mat-icon>
-      </a>
+      <a href="https://github.com/winnaingsoe6666" target="_blank" class="social-item"><mat-icon svgIcon="github"></mat-icon></a>
+      <a href="https://www.linkedin.com/in/win-naing-soe" target="_blank" class="social-item"><mat-icon svgIcon="linkedin"></mat-icon></a>
     </div>
   </div>
-</div>
+</nav>

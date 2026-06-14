@@ -1,12 +1,12 @@
-import { Component, ViewChild, ElementRef, OnInit } from '@angular/core';
+import { Component, ViewChild, ElementRef, OnInit, HostListener } from '@angular/core';
 import { MatIconModule, MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { trigger, transition, style, animate, query, stagger } from '@angular/animations';
+import { ThemeService } from '../../services/theme.service';
 
 @Component({
-  selector: 'app-sidebar',
+  selector: 'app-navbar',
   templateUrl: './sidebar.component.html',
   styleUrls: ['./sidebar.component.scss'],
   standalone: true,
@@ -14,19 +14,6 @@ import { trigger, transition, style, animate, query, stagger } from '@angular/an
     CommonModule,
     RouterModule,
     MatIconModule
-  ],
-  animations: [
-    trigger('sidebarAnimation', [
-      transition(':enter', [
-        query('.profile-section, .nav-item, .social-item', [
-          style({ opacity: 0, transform: 'translateX(-20px)' }),
-          stagger(100, [
-            animate('500ms cubic-bezier(0.35, 0, 0.25, 1)', 
-              style({ opacity: 1, transform: 'translateX(0)' }))
-          ])
-        ])
-      ])
-    ])
   ]
 })
 export class SidebarComponent implements OnInit {
@@ -34,89 +21,80 @@ export class SidebarComponent implements OnInit {
   
   profileImage = 'assets/profile.png';
   public isSidebarOpen = false; // State for mobile toggle
+  public activeSection = 'home';
+  currentTheme = 'theme-day';
 
   constructor(
     private matIconRegistry: MatIconRegistry,
-    private domSanitizer: DomSanitizer
+    private domSanitizer: DomSanitizer,
+    public themeService: ThemeService
   ) {
     // Register custom icons
-    this.matIconRegistry.addSvgIcon(
-      'line',
-      this.domSanitizer.bypassSecurityTrustResourceUrl('assets/icons/line.svg')
-    );
-    this.matIconRegistry.addSvgIcon(
-      'github',
-      this.domSanitizer.bypassSecurityTrustResourceUrl('assets/icons/github.svg')
-    );
-    this.matIconRegistry.addSvgIcon(
-      'linkedin',
-      this.domSanitizer.bypassSecurityTrustResourceUrl('assets/icons/linkedin.svg')
-    );
-    this.matIconRegistry.addSvgIcon(
-      'facebook',
-      this.domSanitizer.bypassSecurityTrustResourceUrl('assets/icons/facebook.svg')
-    );
-    this.matIconRegistry.addSvgIcon(
-      'gmail',
-      this.domSanitizer.bypassSecurityTrustResourceUrl('assets/icons/gmail.svg')
-    );
-    this.matIconRegistry.addSvgIcon(
-      'phone',
-      this.domSanitizer.bypassSecurityTrustResourceUrl('assets/icons/phone.svg')
-    );
-    this.matIconRegistry.addSvgIcon(
-      'location',
-      this.domSanitizer.bypassSecurityTrustResourceUrl('assets/icons/location.svg')
-    );
-    this.matIconRegistry.addSvgIcon(
-      'whatsapp',
-      this.domSanitizer.bypassSecurityTrustResourceUrl('assets/icons/whatsapp.svg')
-    );
+    this.matIconRegistry.addSvgIcon('line', this.domSanitizer.bypassSecurityTrustResourceUrl('assets/icons/line.svg'));
+    this.matIconRegistry.addSvgIcon('github', this.domSanitizer.bypassSecurityTrustResourceUrl('assets/icons/github.svg'));
+    this.matIconRegistry.addSvgIcon('linkedin', this.domSanitizer.bypassSecurityTrustResourceUrl('assets/icons/linkedin.svg'));
+    this.matIconRegistry.addSvgIcon('facebook', this.domSanitizer.bypassSecurityTrustResourceUrl('assets/icons/facebook.svg'));
+    this.matIconRegistry.addSvgIcon('gmail', this.domSanitizer.bypassSecurityTrustResourceUrl('assets/icons/gmail.svg'));
   }
 
   ngOnInit() {
-    // Additional initialization logic if needed
+    this.themeService.currentTheme$.subscribe(theme => {
+      this.currentTheme = theme;
+    });
   }
 
-  // New method to toggle the sidebar
+  setTheme(theme: string) {
+    this.themeService.setTheme(theme);
+  }
+
+  @HostListener('window:scroll', ['$event'])
+  onScroll() {
+    // Order must match the DOM order in home.component.html
+    const sections = ['home', 'about', 'resume', 'education', 'portfolio', 'contact'];
+    let current = 'home';
+    for (const section of sections) {
+      const element = document.getElementById(section);
+      if (element) {
+        const rect = element.getBoundingClientRect();
+        // Trigger point 100px from top
+        if (rect.top <= 100) {
+          current = section;
+        }
+      }
+    }
+    this.activeSection = current;
+  }
+
+  scrollTo(sectionId: string): void {
+    this.isSidebarOpen = false; // close mobile menu if open
+    this.activeSection = sectionId;
+    if (sectionId === 'home') {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else {
+      const element = document.getElementById(sectionId);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
+  }
+
   toggleSidebar(): void {
     this.isSidebarOpen = !this.isSidebarOpen;
   }
 
   handleImageError(event: any) {
     console.error('Image failed to load:', this.profileImage);
-    const img = event.target;
-    img.style.backgroundColor = '#008080';
-    img.style.display = 'flex';
-    img.style.alignItems = 'center';
-    img.style.justifyContent = 'center';
+  }
+
+  getGreeting(): string {
+    const hour = new Date().getHours();
     
-    const parent = img.parentElement;
-    if (!parent.querySelector('.initials')) {
-      const initialsContainer = document.createElement('div');
-      initialsContainer.className = 'initials';
-      initialsContainer.style.position = 'absolute';
-      initialsContainer.style.top = '50%';
-      initialsContainer.style.left = '50%';
-      initialsContainer.style.transform = 'translate(-50%, -50%)';
-      initialsContainer.style.display = 'flex';
-      initialsContainer.style.flexDirection = 'column';
-      initialsContainer.style.alignItems = 'center';
-      initialsContainer.style.justifyContent = 'center';
-      initialsContainer.style.width = '100%';
-      initialsContainer.style.height = '100%';
-      initialsContainer.style.borderRadius = '50%';
-      initialsContainer.style.backgroundColor = '#008080';
-      
-      const initials = document.createElement('span');
-      initials.textContent = 'WNS';
-      initials.style.color = 'white';
-      initials.style.fontSize = '2.5rem';
-      initials.style.fontWeight = 'bold';
-      initials.style.letterSpacing = '1px';
-      
-      initialsContainer.appendChild(initials);
-      parent.appendChild(initialsContainer);
+    if (hour >= 5 && hour < 12) {
+      return 'Good Morning';
+    } else if (hour >= 12 && hour < 17) {
+      return 'Good Afternoon';
+    } else {
+      return 'Good Evening';
     }
   }
 }

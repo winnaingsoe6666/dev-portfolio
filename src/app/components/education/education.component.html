@@ -1,41 +1,72 @@
-<div class="education-container">
-  <h1 class="title" @fadeIn>Education & Certifications</h1>
+<div class="education-wrapper">
+  <div class="education-container">
+    <h1 class="title" @fadeIn>Education & Evolution</h1>
 
-  <div class="main-content-card">
-    <div class="degree-feature-card" @fadeIn>
-      <div class="logo-section">
-        <img [src]="universityEducation.logo" [alt]="universityEducation.institution + ' logo'">
-      </div>
-      <div class="details-section">
-        <span class="date">{{ universityEducation.date }}</span>
-        <h3 class="degree">{{ universityEducation.degree }}</h3>
-        <p class="institution">{{ universityEducation.institution }}</p>
+    <div class="top-section" @fadeIn>
+      
+      <!-- Degree Card -->
+      <div class="premium-card degree-card">
+        <div class="card-header">
+          <h3 class="degree">🎓 {{ universityEducation.degree }}</h3>
+        </div>
+        <div class="institution-row">
+          <span class="institution">{{ universityEducation.institution }}</span>
+          <span class="separator">•</span>
+          <span class="date">{{ universityEducation.date }}</span>
+        </div>
 
         <div class="highlights" *ngIf="(universityEducation.highlights ?? []).length > 0">
-          <h4>Key Achievements</h4>
-          <ul>
+          <div class="highlights-label">Highlights:</div>
+          <ul class="highlights-list">
             <li *ngFor="let highlight of universityEducation.highlights">
-              <mat-icon>military_tech</mat-icon>
-              <span>{{ highlight }}</span>
+              <span class="bullet">•</span> {{ highlight }}
             </li>
           </ul>
         </div>
       </div>
+
+      <!-- Continuous Learning Card -->
+      <div class="premium-card learning-card">
+        <div class="learning-header">
+          <mat-icon class="learning-icon">all_inclusive</mat-icon>
+          <h3 class="learning-title">Continuous Learning</h3>
+        </div>
+        <p class="learning-context">
+          Constantly expanding my expertise to build robust 
+          <strong>FinTech, Core Banking, & Enterprise Solutions</strong>.
+        </p>
+        
+        <div class="badges-grid">
+          <div class="learning-badge" *ngFor="let focus of learningFocusList">
+            <span class="badge-icon">{{ focus.icon }}</span>
+            <span class="badge-label">{{ focus.label }}</span>
+          </div>
+        </div>
+      </div>
+
     </div>
 
-    <div class="certificates-section" @listAnimation>
+    <!-- Certifications Section -->
+    <div class="certifications-section" @listAnimation>
       <h2 class="section-title">Professional Certifications</h2>
       <div class="certificates-grid">
-        <div *ngFor="let cert of certifications" class="certificate-card">
+        <div *ngFor="let cert of certifications" class="premium-card certificate-card">
           <div class="cert-header">
-            <mat-icon class="cert-icon">verified</mat-icon>
-            <div class="cert-title-issuer">
-              <h3 class="cert-title">{{ cert.title }}</h3>
-              <p class="cert-issuer">{{ cert.issuer }}</p>
+            <div class="cert-icon-wrapper">
+              <mat-icon>verified</mat-icon>
             </div>
-            <span class="date">{{ cert.date }}</span>
+            <div class="cert-title-group">
+              <h3 class="cert-title">{{ cert.title }}</h3>
+              <div class="cert-issuer-row">
+                <span class="cert-issuer">{{ cert.issuer }}</span>
+                <span class="separator">•</span>
+                <span class="date">{{ cert.date }}</span>
+              </div>
+            </div>
           </div>
+          
           <p class="cert-description">{{ cert.description }}</p>
+          
           <div class="cert-links" *ngIf="cert.credentialId || cert.issuerUrl">
             <a *ngIf="cert.credentialUrl" [href]="cert.credentialUrl" target="_blank" class="cert-link">
               <mat-icon>badge</mat-icon>
@@ -49,5 +80,6 @@
         </div>
       </div>
     </div>
+
   </div>
 </div>
