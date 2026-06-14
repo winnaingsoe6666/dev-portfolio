@@ -1,12 +1,22 @@
 <div class="about-container" @fadeSlideIn>
-  
+
   <h1 class="title anim-item">About Me</h1>
-  
+
   <div class="profile-section anim-item">
     <div class="description-section">
       <h2>Software Engineer</h2>
       <p class="description">
-        Full-Stack Software Engineer with 5+ years of experience specializing in FinTech and core banking systems. Skilled in developing scalable, secure, and high-performance applications using Java, Spring Boot, Angular, and Docker. Proven ability to lead teams, optimize processes, and deliver end-to-end solutions for both enterprise and open-source environments. Passionate about modernizing legacy systems and integrating emerging technologies like AI.
+        I'm a Senior Software Engineer passionate about building reliable software that solves real business problems.
+        Over the last 6+ years, I've worked primarily in FinTech and core banking environments, developing secure and
+        scalable applications using Java, Spring Boot, PostgreSQL, Microservices, and Angular. From building new systems
+        to modernizing legacy platforms, I enjoy tackling technical challenges that improve performance,
+        maintainability, and user experience.
+        My experience extends beyond writing code. I've led development initiatives, collaborated with international
+        teams, mentored junior developers, and contributed to projects that support critical financial operations. These
+        experiences have strengthened both my technical expertise and my ability to deliver solutions that align with
+        business objectives.
+        When I'm not coding, I'm usually exploring new technologies, learning about AI, or looking for better ways to
+        build software that creates lasting impact.
       </p>
     </div>
   </div>
@@ -24,14 +34,14 @@
         <div class="info-icon">☕</div>
         <div class="info-content">
           <strong>PRIMARY FUEL:</strong>
-          <span>Freshly Brewed Coffee</span>
+          <span>Coffee & Curiosity</span>
         </div>
       </div>
       <div class="info-item anim-item">
-        <div class="info-icon">😂</div>
+        <div class="info-icon">🎯</div>
         <div class="info-content">
-          <strong>FLUENT IN:</strong>
-          <span>Java, Angular, SQL & Sarcasm</span>
+          <strong>SPECIALIZATION:</strong>
+          <span>FinTech • Core Banking • System Modernization</span>
         </div>
       </div>
       <div class="info-item anim-item">
@@ -68,70 +78,192 @@
       <img src="assets/about.png" alt="About illustration">
     </div>
   </div>
+  <div class="section-divider anim-item"></div>
 
-  <section class="skills-dashboard anim-item" id="skills">
-    <h2 class="section-title">Skills Dashboard</h2>
-    <p class="section-subtitle">Filter by category to see a visual representation of key skills.</p>
-    
-    <div class="dashboard-content">
-      <div class="skill-filters">
-        <button *ngFor="let category of skillsData.categories"
-                (click)="filterSkills(category)"
-                [class.active]="category === activeCategory">
-          {{ category }}
-        </button>
+  <section class="technical-arsenal anim-item" id="skills">
+    <h2 class="section-title">Technical Arsenal</h2>
+
+    <div class="arsenal-grid">
+      <!-- Card 1 -->
+      <div class="arsenal-card">
+        <h3 class="card-header highlight-header">
+          <span class="badge">⭐</span>
+          <span class="header-text">Domain Expertise</span>
+        </h3>
+        <div class="card-divider"></div>
+        <ul class="tech-list">
+          <li><span class="icon">🏦</span> Core Banking</li>
+          <li><span class="icon">🌱</span> Microfinance</li>
+          <li><span class="icon">📝</span> Loan Management</li>
+          <li><span class="icon">💳</span> Payment Integration</li>
+          <li><span class="icon">📈</span> Stock Exchange Systems</li>
+          <li><span class="icon">📊</span> Financial Reporting</li>
+        </ul>
+        <div class="tags-section">
+          <h4>Tags:</h4>
+          <div class="tags">
+            <span class="tag">Business Analysis</span>
+            <span class="tag">System Integration</span>
+            <span class="tag">Compliance</span>
+          </div>
+        </div>
       </div>
-      <div class="chart-container">
-        <canvas #skillsChartCanvas id="skillsChart"></canvas>
+
+      <!-- Card 2 -->
+      <div class="arsenal-card">
+        <h3 class="card-header">Backend & Architecture</h3>
+        <div class="card-divider"></div>
+        <ul class="tech-list">
+          <li><span class="icon">☕</span> Java</li>
+          <li><span class="icon">🍃</span> Spring Boot</li>
+          <li><span class="icon">🔗</span> REST APIs</li>
+          <li><span class="icon">🏗</span> Microservices</li>
+          <li><span class="icon">🔒</span> Spring Security</li>
+          <li><span class="icon">🐚</span> Shell Scripting</li>
+        </ul>
+        <div class="tags-section">
+          <h4>Tags:</h4>
+          <div class="tags">
+            <span class="tag">System Design</span>
+            <span class="tag">SOLID Principles</span>
+            <span class="tag">Enterprise Apps</span>
+          </div>
+        </div>
       </div>
+
+      <!-- Card 3 -->
+      <div class="arsenal-card">
+        <h3 class="card-header">Web App Development</h3>
+        <div class="card-divider"></div>
+        <ul class="tech-list">
+          <li><span class="icon">🅰️</span> Angular</li>
+          <li><span class="icon">📜</span> TypeScript / JS</li>
+          <li><span class="icon">🎨</span> HTML5 / CSS / SCSS</li>
+          <li><span class="icon">📱</span> Responsive UI</li>
+          <li><span class="icon">⚡</span> Single Page Apps</li>
+        </ul>
+        <div class="tags-section">
+          <h4>Tags:</h4>
+          <div class="tags">
+            <span class="tag">UI/UX Design</span>
+            <span class="tag">Web Vitals</span>
+            <span class="tag">Accessibility</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="arsenal-card">
+        <h3 class="card-header">Database & Storage</h3>
+        <div class="card-divider"></div>
+        <ul class="tech-list">
+          <li><span class="icon">🐘</span> PostgreSQL</li>
+          <li><span class="icon">📊</span> Oracle</li>
+          <li><span class="icon">🐬</span> MySQL</li>
+          <li><span class="icon">💾</span> Stored Procedures</li>
+          <li><span class="icon">🗄️</span> Query Optimization</li>
+          <li><span class="icon">🔄</span> Database Migration</li>
+        </ul>
+        <div class="tags-section">
+          <h4>Tags:</h4>
+          <div class="tags">
+            <span class="tag">Data Modeling</span>
+            <span class="tag">Stored Procedures</span>
+            <span class="tag">Indexing</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 5 -->
+      <div class="arsenal-card">
+        <h3 class="card-header">DevOps & Tools</h3>
+        <div class="card-divider"></div>
+        <ul class="tech-list">
+          <li><span class="icon">🐳</span> Docker</li>
+          <li><span class="icon">🔀</span> Git</li>
+          <li><span class="icon">☁️</span> AWS (EC2, S3)</li>
+          <li><span class="icon">🔄</span> CI/CD Pipelines</li>
+          <li><span class="icon">🐧</span> Linux / Unix</li>
+          <li><span class="icon">🧪</span> Test Automation</li>
+        </ul>
+        <div class="tags-section">
+          <h4>Tags:</h4>
+          <div class="tags">
+            <span class="tag">Agile/Scrum</span>
+            <span class="tag">Code Reviews</span>
+            <span class="tag">Git Workflow</span>
+          </div>
+        </div>
+      </div>
+
     </div>
   </section>
+
+  <div class="section-divider anim-item"></div>
+
   <section class="focus-section anim-item">
-    <h2 class="section-title">My Focus Areas</h2>
+    <h2 class="section-title">Core Expertise</h2>
     <div class="focus-cards">
-      
+
       <div class="focus-card">
         <div class="focus-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#045748"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0l4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4z"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#045748">
+            <path d="M0 0h24v24H0V0z" fill="none" />
+            <path d="M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0l4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4z" />
+          </svg>
         </div>
-        <h3>Backend Development</h3>
+        <h3>Backend Engineering</h3>
         <p>
-          Engineering robust, scalable, and secure systems using Java and Spring Boot, with a focus on clean code and high performance for FinTech applications.
+          Designing secure, scalable backend services using Java, Spring Boot, REST APIs, and Microservices for
+          enterprise and financial systems.
         </p>
       </div>
 
       <div class="focus-card">
         <div class="focus-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#045748"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93s3.05-7.44 7-7.93v15.86zm2-15.86c1.03.13 2 .45 2.87.93H13v-.93zM13 7h5.24c.25.31.48.65.68 1H13V7zm0 3h6.74c.08.33.15.66.19 1H13v-1zm0 3h6.93c-.04.34-.11.67-.19 1H13v-1zm0 3h5.93c-.2.35-.43.69-.68 1H13v-1zm-1 2.07c-.87.48-1.84.78-2.87.93v-.93H11v.93zM5.26 9h5.74V7H5.58c-.25-.31-.48-.65-.68-1H11v3H5.26zm0 3H11v-1H5.07c-.08-.33-.15-.66-.19-1H11v3zm0 3H11v-1H5.58c.2-.35.43.69.68 1H11v1z"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#045748">
+            <path d="M0 0h24v24H0V0z" fill="none" />
+            <path
+              d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93s3.05-7.44 7-7.93v15.86zm2-15.86c1.03.13 2 .45 2.87.93H13v-.93zM13 7h5.24c.25.31.48.65.68 1H13V7zm0 3h6.74c.08.33.15.66.19 1H13v-1zm0 3h6.93c-.04.34-.11.67-.19 1H13v-1zm0 3h5.93c-.2.35-.43.69-.68 1H13v-1zm-1 2.07c-.87.48-1.84.78-2.87.93v-.93H11v.93zM5.26 9h5.74V7H5.58c-.25-.31-.48-.65-.68-1H11v3H5.26zm0 3H11v-1H5.07c-.08-.33-.15-.66-.19-1H11v3zm0 3H11v-1H5.58c.2-.35.43.69.68 1H11v1z" />
+          </svg>
         </div>
-        <h3>System Architecture</h3>
+        <h3>System Modernization</h3>
         <p>
-          Designing and implementing end-to-end solutions for core banking and stock exchange platforms, ensuring system integrity and efficient data flow.
+          Transforming legacy applications into maintainable, high-performance solutions while preserving business
+          value.
         </p>
       </div>
 
       <div class="focus-card">
         <div class="focus-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#045748"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M19 9.3V4h-3v2.6L12 3 2 12h3v8h5v-6h4v6h5v-8h3l-4-3.7zM9 13c0-1.66 1.34-3 3-3s3 1.34 3 3-1.34 3-3 3-3-1.34-3-3z"/></svg>
-
+          <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#045748">
+            <path d="M0 0h24v24H0V0z" fill="none" />
+            <path
+              d="M19 9.3V4h-3v2.6L12 3 2 12h3v8h5v-6h4v6h5v-8h3l-4-3.7zM9 13c0-1.66 1.34-3 3-3s3 1.34 3 3-1.34 3-3 3-3-1.34-3-3z" />
+          </svg>
         </div>
-        <h3>Innovation & Modernization</h3>
+        <h3>Financial Systems</h3>
         <p>
-          Breathing new life into legacy systems by integrating emerging technologies like AI to enhance functionality, improve efficiency, and unlock new business value.
+          Building and enhancing core banking, microfinance, loan management, and payment-related platforms.
         </p>
       </div>
 
       <div class="focus-card">
         <div class="focus-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#045748"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#045748">
+            <path d="M0 0h24v24H0V0z" fill="none" />
+            <path
+              d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z" />
+          </svg>
         </div>
-        <h3>Mentorship & Quality</h3>
+        <h3>Technical Leadership</h3>
         <p>
-          Leading development cycles, performing constructive code reviews, and mentoring junior engineers to maintain high standards of code quality and teamwork.
+          Leading development initiatives, mentoring engineers, performing code reviews, and driving quality
+          improvements.
         </p>
       </div>
 
     </div>
   </section>
-  
+
 </div>
